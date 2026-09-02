@@ -94,13 +94,14 @@ body[data-mode=four] #panes{grid-template-columns:1fr 1fr;grid-template-rows:1fr
 .prime:hover{background:#27503b}
 .row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px;color:#6b6a5a}
 .row input[type=checkbox]{width:15px;height:15px;accent-color:var(--acc);cursor:pointer}
-input[type=text],input[type=number],input[type=date],select,textarea{border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;background:#fff;transition:border-color .15s}
+input[type=text],input[type=number],input[type=date],input[type=password],select,textarea{border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;background:#fff;transition:border-color .15s}
 input:hover,select:hover,textarea:hover{border-color:#cbc7b2}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
 textarea{resize:vertical;width:100%}
 .num{width:56px}.num2{width:70px}
 .lbl{font-size:12px;color:#6b6a5a;font-weight:700;display:block}
 .empty-in{font-size:12px;color:#acada0;text-align:center;padding:16px}
+.hint-in{font-size:10.5px;color:#a5a695;line-height:1.6}
 
 /* ── 알림장 ── */
 .npagebar{display:flex;gap:5px;flex:none;align-items:center}
@@ -242,6 +243,37 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .sw-laps{max-height:140px;overflow:auto;font-size:12px;display:flex;flex-direction:column;gap:3px}
 .sw-lap{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line2);border-radius:7px;padding:4px 10px;font-variant-numeric:tabular-nums;box-shadow:var(--sh1)}
 .sw-lap b{font-weight:800}
+
+/* ── AI 도우미 ── */
+.ai-cfg{display:flex;flex-direction:column;gap:7px;background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:10px 12px;flex:none}
+.ai-cfg .row{margin:0}
+#aiKey{flex:1}
+#aiEndpoint{flex:1}
+#aiModel{flex:1}
+.mchips{display:flex;gap:4px;flex-wrap:wrap}
+.mchip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:10.5px;font-weight:700;color:#5f6153}
+.mchip:hover{background:var(--hov);border-color:#cfcbb6}
+#aiChat{flex:1;min-height:140px;overflow:auto;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px}
+.aim{max-width:86%;padding:9px 12px;border-radius:12px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.aim.u{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:4px}
+.aim.a{align-self:flex-start;background:#fff;border:1px solid var(--line2);border-bottom-left-radius:4px;box-shadow:var(--sh1)}
+.aim.wait{color:#96988a;animation:blink 1.2s steps(2) infinite}
+.ai-inrow{display:flex;gap:6px;flex:none}
+#aiInput{flex:1;resize:none;height:40px;line-height:1.5}
+
+/* ── AI 문제 생성기 ── */
+#genOut{flex:1;min-height:120px;overflow:auto;background:#fff;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+
+/* ── 모둠 점수판 ── */
+#scoreGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;align-content:start}
+.score-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;align-items:center;box-shadow:var(--sh1)}
+.score-name{border:0;border-bottom:1px dashed var(--line);background:transparent;font-weight:800;text-align:center;font-size:14px;width:100%;border-radius:0;padding:2px}
+.score-name:focus{border-color:var(--acc)}
+.score-pts{font-size:34px;font-weight:900;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.1}
+.score-btns{display:flex;gap:4px}
+.score-btns .ib{height:28px;padding:0 8px;font-size:12px}
+.score-del{background:none;border:0;font-size:10px;color:#c9c7b4;font-weight:800}
+.score-del:hover{color:#c0392b}
 
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background:#d2cfba;border-radius:4px}
@@ -478,6 +510,78 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
+  <!-- 12 AI 도우미 -->
+  <section class="widget" data-w="ai" id="w_ai">
+    <header class="wh"><span class="mod-badge">12</span><h2>AI 도우미</h2>
+      <div class="wtools"><button class="ib" id="aiClear">대화 지우기</button></div>
+    </header>
+    <div class="wb">
+      <div class="ai-cfg">
+        <div class="row">
+          <select id="aiMode" style="width:130px">
+            <option value="direct">Groq 직접 연결</option>
+            <option value="proxy">Vercel 프록시</option>
+          </select>
+          <input id="aiKey" type="password" placeholder="Groq API 키 (console.groq.com에서 발급)">
+          <input id="aiEndpoint" type="text" class="hide" placeholder="프록시 주소 (예: /api/chat)">
+        </div>
+        <div class="row">
+          <span>모델</span><input id="aiModel" type="text" placeholder="qwen/qwen3.8">
+          <div class="mchips">
+            <button class="mchip" data-m="qwen/qwen3.8">qwen3.8</button>
+            <button class="mchip" data-m="qwen/qwen3-32b">qwen3-32b</button>
+            <button class="mchip" data-m="llama-3.3-70b-versatile">llama-3.3-70b</button>
+          </div>
+        </div>
+        <div class="hint-in">직접 연결은 키가 이 브라우저에만 저장됩니다. 키 노출이 걱정되면 아래 배포 안내대로 Vercel 프록시를 사용하세요. 모델 ID는 Groq 콘솔 Models에서 확인 가능합니다.</div>
+      </div>
+      <div id="aiChat"></div>
+      <div class="ai-inrow">
+        <textarea id="aiInput" placeholder="질문을 입력하세요 (Enter 전송, Shift+Enter 줄바꿈)"></textarea>
+        <button class="prime" id="aiSend">전송</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 AI 문제 생성기 -->
+  <section class="widget" data-w="gen" id="w_gen">
+    <header class="wh"><span class="mod-badge">13</span><h2>AI 문제 생성기</h2>
+      <div class="wtools"><button class="ib" id="genCopy">복사</button></div>
+    </header>
+    <div class="wb">
+      <div class="row">
+        <select id="genSubj"></select>
+        <input id="genTopic" type="text" style="flex:1;min-width:120px" placeholder="주제 / 단원 (예: 분수의 덧셈)">
+        <select id="genCnt">
+          <option value="3">3문항</option><option value="5" selected>5문항</option>
+          <option value="7">7문항</option><option value="10">10문항</option>
+        </select>
+      </div>
+      <div class="row">
+        <select id="genType">
+          <option>단답형</option><option>선택형(4지선다)</option><option>서술형</option><option>혼합형</option>
+        </select>
+        <select id="genLv">
+          <option>쉬움</option><option selected>보통</option><option>어려움</option>
+        </select>
+        <button class="prime" id="genBtn">문제 만들기</button>
+      </div>
+      <div class="hint-in">AI 도우미 플러그인에 설정된 키/모델을 사용합니다.</div>
+      <div id="genOut">설정을 고른 후 문제 만들기 버튼을 누르세요.</div>
+    </div>
+  </section>
+
+  <!-- 14 모둠 점수판 -->
+  <section class="widget" data-w="score" id="w_score">
+    <header class="wh"><span class="mod-badge">14</span><h2>모둠 점수판</h2>
+      <div class="wtools">
+        <button class="ib" id="btnTeamAdd">팀 추가</button>
+        <button class="ib" id="btnScoreReset">모두 0점</button>
+      </div>
+    </header>
+    <div class="wb"><div id="scoreGrid"></div></div>
+  </section>
+
 </div><!-- /pool -->
 
 <div id="panes"></div>
@@ -490,7 +594,7 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 "use strict";
 /* ═══ A. 유틸 ═══ */
 const $=s=>document.querySelector(s);
-const KEY='assign_v5';
+const KEY='assign_v6';
 const pad=n=>String(n).padStart(2,'0');
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
@@ -499,23 +603,36 @@ const download=(name,data,type)=>{const a=document.createElement('a');a.href=URL
 function todayTitle(){const n=new Date();return `${n.getMonth()+1}. ${n.getDate()}. (${'일월화수목금토'[n.getDay()]})`;}
 function subjColor(t){let h=0;for(const c of String(t))h=(h*31+c.charCodeAt(0))%360;
  return{bg:`hsl(${h} 60% 90%)`,fg:`hsl(${h} 55% 30%)`};}
+async function copyText(t,btn){let ok=true;
+ try{await navigator.clipboard.writeText(t);}catch(err){
+  try{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+   document.execCommand('copy');ta.remove();}catch(e2){ok=false;}}
+ if(btn){const o=btn.textContent;btn.textContent=ok?'복사됨':'복사 실패';setTimeout(()=>btn.textContent=o,1200);}}
 
 /* ═══ B. 상태 ═══ */
 const WIDGETS=[
  {id:'note',title:'알림장'},{id:'board',title:'보드'},{id:'tt',title:'시간표'},{id:'picker',title:'랜덤 뽑기'},
  {id:'cal',title:'달력'},{id:'clock',title:'시계 / 타이머'},{id:'wx',title:'날씨'},{id:'dday',title:'D-Day'},
- {id:'ann',title:'알림판'},{id:'counter',title:'인원 카운터'},{id:'sw',title:'스톱워치'}];
+ {id:'ann',title:'알림판'},{id:'counter',title:'인원 카운터'},{id:'sw',title:'스톱워치'},
+ {id:'ai',title:'AI 도우미'},{id:'gen',title:'AI 문제 생성기'},{id:'score',title:'모둠 점수판'}];
 const MODE_N={one:1,two:2,four:4};
-function makeDef(){return{ver:5,view:{mode:'one',panes:['','','','']},ui:{app:'#e9ebe3',card:'#fffef9'},
+const SUBJ_LIST=['국어','수학','영어','과학','사회','도덕','역사','음악','미술','체육','기술가정','기타'];
+function makeDef(){return{ver:6,view:{mode:'one',panes:['','','','']},ui:{app:'#e9ebe3',card:'#fffef9'},
  note:{pages:[{id:1,title:todayTitle(),tasks:[],html:'',draw:null}],cur:0,boardColor:'#2c4a3e',fzPx:18},
  board:{draw:null},
  tt:{cur:0,slots:[1,2,3].map(i=>({name:'시간표 '+i,cells:Array(35).fill('')}))},
  cal:{},picker:{names:'',seats:{cols:4},seatMap:[],fixed:[],prevMap:[],noSame:true},
  wx:{lat:null,lon:null},dday:{items:[]},
- announce:{text:'',size:36},counter:{goal:25,now:0},sw:{acc:0,runStart:null,laps:[]}};}
+ announce:{text:'',size:36},counter:{goal:25,now:0},sw:{acc:0,runStart:null,laps:[]},
+ ai:{mode:'direct',key:'',endpoint:'/api/chat',model:'qwen/qwen3.8'},
+ aid:{msgs:[]},
+ gen:{subj:'수학',topic:'',cnt:'5',type:'단답형',lv:'보통',last:''},
+ score:{teams:[{name:'1모둠',pts:0},{name:'2모둠',pts:0},{name:'3모둠',pts:0},{name:'4모둠',pts:0}]}};}
 let state=makeDef();
 try{const s=JSON.parse(localStorage.getItem(KEY));
- if(s&&s.ver===5){state=s;}}catch(e){state=makeDef();}
+ if(s&&s.ver===6){state=s;}
+ else{const o=JSON.parse(localStorage.getItem('assign_v5'));
+  if(o&&o.ver===5){state=Object.assign(makeDef(),o);state.ver=6;}}}catch(e){state=makeDef();}
 /* 상태 무결성 보강 */
 (function sanitize(){
  const d=makeDef();
@@ -544,7 +661,12 @@ try{const s=JSON.parse(localStorage.getItem(KEY));
  state.counter.goal=clamp(state.counter.goal||25,1,999);
  state.counter.now=clamp(state.counter.now||0,0,999);
  if(!state.sw)state.sw=d.sw;
- if(!Array.isArray(state.sw.laps))state.sw.laps=[];})();
+ if(!Array.isArray(state.sw.laps))state.sw.laps=[];
+ if(!state.ai)state.ai=d.ai;
+ if(!['direct','proxy'].includes(state.ai.mode))state.ai.mode='direct';
+ if(!state.aid||!Array.isArray(state.aid.msgs))state.aid=d.aid;
+ if(!state.gen)state.gen=d.gen;
+ if(!state.score||!Array.isArray(state.score.teams)||!state.score.teams.length)state.score=d.score;})();
 let saveT=null;
 function flushSave(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
 function scheduleSave(){clearTimeout(saveT);$('#saveDot').textContent='저장 중';
@@ -602,7 +724,7 @@ const tray=$('#tray');
 (function buildTray(){
  tray.innerHTML='<span class="tray-label">플러그인</span>';
  WIDGETS.forEach((w,i)=>{
-  const c=document.createElement('div');c.className='pchip';c.dragaggable=true;c.draggable=true;
+  const c=document.createElement('div');c.className='pchip';c.draggable=true;
   c.innerHTML=`<span class="pn">${pad(i+1)}</span>${esc(w.title)}<span class="slot-tag hide"></span>`;
   c.addEventListener('click',()=>assignTo(activePane,w.id));
   c.addEventListener('dragstart',e=>{try{e.dataTransfer.setData('text/plain',w.id);}catch(err){}});
@@ -693,7 +815,7 @@ window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(fitAll,15
 /* ═══ G. 알림장 ═══ */
 const noteArea=$('#noteArea'),pageSel=$('#pageSel'),subjSel=$('#subjSel'),taskIn=$('#taskIn'),taskList=$('#taskList');
 let basePx=state.note.fzPx,selFz=3,hlOn=false,savedRange=null;
-subjSel.innerHTML=['국어','수학','영어','과학','사회','도덕','역사','음악','미술','체육','기술가정','기타'].map(s=>`<option>${s}</option>`).join('');
+subjSel.innerHTML=SUBJ_LIST.map(s=>`<option>${s}</option>`).join('');
 try{document.execCommand('styleWithCSS',false,true);}catch(e){}
 function applyBase(){noteArea.style.fontSize=basePx+'px';$('#fzLabel').textContent=basePx+'px';state.note.fzPx=basePx;}
 function applyBoardColor(){noteArea.style.background=state.note.boardColor;$('#boardBg').value=state.note.boardColor;}
@@ -795,11 +917,7 @@ function noteAllText(){commitNote();let out='';
  return out.trim()||'(내용 없음)';}
 $('#btnExport').addEventListener('click',()=>{flushSave();
  download('알림장_'+new Date().toISOString().slice(0,10)+'.txt',noteAllText(),'text/plain');});
-$('#btnCopy').addEventListener('click',async e=>{const t=noteAllText();let ok=true;
- try{await navigator.clipboard.writeText(t);}catch(err){
-  try{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
-   document.execCommand('copy');ta.remove();}catch(e2){ok=false;}}
- const b=e.target,o=b.textContent;b.textContent=ok?'복사됨':'복사 실패';setTimeout(()=>b.textContent=o,1200);});
+$('#btnCopy').addEventListener('click',e=>copyText(noteAllText(),e.target));
 
 /* ═══ H. 보드 ═══ */
 const bTools=$('#bTools'),bCols=['#23272b','#c0392b','#1d6fd6','#2c8a4b','#e07b39'];
@@ -915,17 +1033,13 @@ $('#btnSeatUndo').addEventListener('click',()=>{
  ns.forEach(n=>{if(!used.has(n)){const i=map.indexOf('');if(i>-1)map[i]=n;else map.push(n);used.add(n);}});
  state.picker.seatMap=map;seatSel=-1;scheduleSave();drawSeats();});
 $('#btnSeatUnfix').addEventListener('click',()=>{state.picker.fixed=[];scheduleSave();drawSeats();});
-$('#btnSeatCopy').addEventListener('click',async e=>{
+$('#btnSeatCopy').addEventListener('click',e=>{
  const cols=clamp(state.picker.seats.cols,2,8),m=state.picker.seatMap;
  if(!m.length)return alert('배치가 없습니다');
  let out='[강단]\n';
  for(let r=0;r<Math.ceil(m.length/cols);r++){
   out+=m.slice(r*cols,r*cols+cols).map(x=>x||'-').join('\t')+'\n';}
- let ok=true;
- try{await navigator.clipboard.writeText(out);}catch(err){
-  try{const ta=document.createElement('textarea');ta.value=out;document.body.appendChild(ta);ta.select();
-   document.execCommand('copy');ta.remove();}catch(e2){ok=false;}}
- const b=e.target,o=b.textContent;b.textContent=ok?'복사됨':'복사 실패';setTimeout(()=>b.textContent=o,1200);});
+ copyText(out,e.target);});
 
 /* ═══ K. 달력 ═══ */
 let calY,calM,calSel=null;{const t=new Date();calY=t.getFullYear();calM=t.getMonth();}
@@ -1050,21 +1164,134 @@ $('#swToggle').addEventListener('click',()=>state.sw.runStart?swPause():swStart(
 $('#swLapBtn').addEventListener('click',swLap);
 $('#swReset').addEventListener('click',swResetAll);
 
-/* ═══ P. 전역 UI ═══ */
+/* ═══ P. AI (Groq / Vercel 프록시) ═══ */
+const AI_SYS='너는 대한민국 학교 현장에서 일하는 교사를 돕는 보조 교사야. 한국어로 간결하고 정확하게 답해. 알림장 문구, 가정통신문, 수업 아이디어, 평가 문항 출제, 학생 상담 문구 등을 도와줘.';
+async function askAI(messages){
+ const ai=state.ai;
+ if(ai.mode==='proxy'){
+  const r=await fetch(ai.endpoint||'/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({messages,model:ai.model||'qwen/qwen3.8'})});
+  let j={};try{j=await r.json();}catch(e){}
+  if(!r.ok)throw new Error('프록시 오류 '+r.status+' '+(j.error||''));
+  return j.content||(j.choices&&j.choices[0]&&j.choices[0].message?j.choices[0].message.content:'')||'';
+ }
+ if(!ai.key)throw new Error('Groq API 키를 입력하세요 (또는 Vercel 프록시 모드 사용)');
+ const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
+  headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},
+  body:JSON.stringify({model:ai.model||'qwen/qwen3.8',messages,temperature:.7})});
+ let j={};try{j=await r.json();}catch(e){}
+ if(!r.ok)throw new Error('Groq 오류 '+r.status+' '+((j.error&&j.error.message)||''));
+ return (j.choices&&j.choices[0]&&j.choices[0].message)?j.choices[0].message.content:'';}
+
+const aiMode=$('#aiMode'),aiKey=$('#aiKey'),aiEndpoint=$('#aiEndpoint'),aiModel=$('#aiModel');
+aiMode.value=state.ai.mode;aiKey.value=state.ai.key;aiEndpoint.value=state.ai.endpoint;aiModel.value=state.ai.model;
+function aiCfgSync(){aiKey.classList.toggle('hide',state.ai.mode==='proxy');
+ aiEndpoint.classList.toggle('hide',state.ai.mode==='direct');}
+aiCfgSync();
+aiMode.addEventListener('change',()=>{state.ai.mode=aiMode.value;aiCfgSync();scheduleSave();});
+aiKey.addEventListener('input',()=>{state.ai.key=aiKey.value;scheduleSave();});
+aiEndpoint.addEventListener('input',()=>{state.ai.endpoint=aiEndpoint.value;scheduleSave();});
+aiModel.addEventListener('input',()=>{state.ai.model=aiModel.value;scheduleSave();});
+document.querySelectorAll('.mchip').forEach(c=>c.addEventListener('click',()=>{
+ aiModel.value=c.dataset.m;state.ai.model=c.dataset.m;scheduleSave();}));
+
+let aiBusy=false;
+function aiAddMsg(role,text){const d=document.createElement('div');
+ d.className='aim '+(role==='user'?'u':'a');d.textContent=text;
+ $('#aiChat').append(d);$('#aiChat').scrollTop=1e9;return d;}
+function aiTrim(){if(state.aid.msgs.length>60)state.aid.msgs=state.aid.msgs.slice(-60);}
+async function aiSend(){
+ const t=$('#aiInput').value.trim();if(!t||aiBusy)return;
+ $('#aiInput').value='';
+ state.aid.msgs.push({role:'user',content:t});aiTrim();scheduleSave();
+ aiAddMsg('user',t);
+ aiBusy=true;
+ const loading=aiAddMsg('assistant','생각 중…');loading.classList.add('wait');
+ try{
+  const hist=[{role:'system',content:AI_SYS},...state.aid.msgs.slice(-12)];
+  const ans=await askAI(hist);
+  state.aid.msgs.push({role:'assistant',content:ans});aiTrim();scheduleSave();
+  loading.remove();aiAddMsg('assistant',ans);
+ }catch(e){loading.remove();aiAddMsg('assistant','오류: '+e.message);}
+ aiBusy=false;}
+$('#aiSend').addEventListener('click',aiSend);
+$('#aiInput').addEventListener('keydown',e=>{
+ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();aiSend();}});
+$('#aiClear').addEventListener('click',()=>{state.aid.msgs=[];$('#aiChat').innerHTML='';scheduleSave();});
+state.aid.msgs.forEach(m=>aiAddMsg(m.role,m.content));
+
+/* ═══ Q. AI 문제 생성기 ═══ */
+const genSubj=$('#genSubj'),genTopic=$('#genTopic'),genCnt=$('#genCnt'),genType=$('#genType'),genLv=$('#genLv'),genOut=$('#genOut');
+genSubj.innerHTML=SUBJ_LIST.map(s=>`<option>${s}</option>`).join('');
+genSubj.value=SUBJ_LIST.includes(state.gen.subj)?state.gen.subj:'수학';
+genTopic.value=state.gen.topic;genCnt.value=state.gen.cnt;
+genType.value=state.gen.type;genLv.value=state.gen.lv;
+if(state.gen.last)genOut.textContent=state.gen.last;
+genSubj.addEventListener('change',()=>{state.gen.subj=genSubj.value;scheduleSave();});
+genTopic.addEventListener('input',()=>{state.gen.topic=genTopic.value;scheduleSave();});
+genCnt.addEventListener('change',()=>{state.gen.cnt=genCnt.value;scheduleSave();});
+genType.addEventListener('change',()=>{state.gen.type=genType.value;scheduleSave();});
+genLv.addEventListener('change',()=>{state.gen.lv=genLv.value;scheduleSave();});
+let genBusy=false;
+$('#genBtn').addEventListener('click',async()=>{
+ if(genBusy)return;
+ const topic=genTopic.value.trim();
+ if(!topic)return alert('주제/단원을 입력하세요');
+ genBusy=true;$('#genBtn').textContent='생성 중…';
+ genOut.textContent='문제를 만드는 중입니다…';
+ const prompt=`너는 한국 학교 평가 문항 출제 전문가야.
+과목: ${state.gen.subj}
+주제/단원: ${topic}
+문항 수: ${state.gen.cnt}
+유형: ${state.gen.type}
+난이도: ${state.gen.lv}
+조건: 한국어로 출력. 문제에 번호를 매겨. 선택형이면 각 문제에 ①~④ 보기를 달고 마지막에 정답 모음을 추가해. 단답형/서술형이면 마지막에 예시 답안을 추가해. 설명은 최소화하고 문항 중심으로 출력해.`;
+ try{
+  const ans=await askAI([{role:'system',content:'너는 정확한 평가 문항을 출제하는 전문가다.'},{role:'user',content:prompt}]);
+  genOut.textContent=ans;state.gen.last=ans;scheduleSave();
+ }catch(e){genOut.textContent='오류: '+e.message;}
+ genBusy=false;$('#genBtn').textContent='문제 만들기';});
+$('#genCopy').addEventListener('click',e=>copyText(genOut.textContent,e.target));
+
+/* ═══ R. 모둠 점수판 ═══ */
+function scoreRender(){const g=$('#scoreGrid');g.innerHTML='';
+ state.score.teams.forEach((t,i)=>{
+  const card=document.createElement('div');card.className='score-card';
+  card.innerHTML=`<input class="score-name" type="text" value="${esc(t.name)}" maxlength="12">
+   <div class="score-pts">${t.pts}</div>
+   <div class="score-btns">
+    <button class="ib" data-d="-5">−5</button><button class="ib" data-d="-1">−1</button>
+    <button class="ib" data-d="1">+1</button><button class="ib" data-d="5">+5</button>
+   </div>
+   <button class="score-del">팀 삭제</button>`;
+  card.querySelector('.score-name').addEventListener('input',e=>{t.name=e.target.value;scheduleSave();});
+  card.querySelectorAll('.score-btns .ib').forEach(b=>b.addEventListener('click',()=>{
+   t.pts=clamp(t.pts+ +b.dataset.d,-999,9999);scoreRender();scheduleSave();}));
+  card.querySelector('.score-del').addEventListener('click',()=>{
+   if(state.score.teams.length<=1)return alert('최소 1팀은 있어야 합니다');
+   state.score.teams.splice(i,1);scoreRender();scheduleSave();});
+  g.append(card);});}
+$('#btnTeamAdd').addEventListener('click',()=>{
+ if(state.score.teams.length>=10)return alert('최대 10팀까지 가능합니다');
+ state.score.teams.push({name:(state.score.teams.length+1)+'모둠',pts:0});scoreRender();scheduleSave();});
+$('#btnScoreReset').addEventListener('click',()=>{
+ state.score.teams.forEach(t=>t.pts=0);scoreRender();scheduleSave();});
+
+/* ═══ S. 전역 UI ═══ */
 function applyUI(){document.documentElement.style.setProperty('--app',state.ui.app);
  document.documentElement.style.setProperty('--card',state.ui.card);
  $('#appBg').value=state.ui.app;$('#cardBg').value=state.ui.card;}
 $('#appBg').addEventListener('input',e=>{state.ui.app=e.target.value;applyUI();scheduleSave();});
 $('#cardBg').addEventListener('input',e=>{state.ui.card=e.target.value;applyUI();scheduleSave();});
 
-/* ═══ Q. 초기화 ═══ */
+/* ═══ T. 초기화 ═══ */
 try{
  applyUI();
  ttSelect();buildTT();drawCal();drawSeats();renderDday();
  renderPages();renderTasks();
  noteArea.innerHTML=curPage().html||'';
  applyBase();applyBoardColor();
- cntRender();swRender();swLapsRender();
+ cntRender();swRender();swLapsRender();scoreRender();
  if(state.sw.runStart){swIv=setInterval(swRender,100);$('#swToggle').textContent='일시정지';}
  if(state.wx.lat!=null){$('#wxLat').value=state.wx.lat;$('#wxLon').value=state.wx.lon;fetchWx();}
  setMode(state.view.mode||'one');
