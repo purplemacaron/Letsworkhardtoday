@@ -46,10 +46,8 @@ body.full #stage{height:100%}
 body.notefocus #top,body.notefocus #tray{display:none}
 body.notefocus #stage{height:100%}
 body.notefocus #w_note{position:fixed;inset:0;z-index:400;border-radius:0;border:0}
-body.notefocus #w_note .npagebar,
-body.notefocus #w_note .naddbar,
-body.notefocus #w_note .nprog,
-body.notefocus #w_note .task-scroll{display:none}
+body.notefocus #w_note .npagebar,body.notefocus #w_note .naddbar,
+body.notefocus #w_note .nprog,body.notefocus #w_note .task-scroll{display:none}
 .exitpill{position:fixed;top:12px;right:14px;z-index:600;display:none;
  background:rgba(35,38,36,.82);color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:8px 16px;font-size:12px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:background .15s}
 body.full #fullExit{display:block}
@@ -257,6 +255,9 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .q-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .q-no{font-size:11px;font-weight:900;color:#fff;background:var(--acc);border-radius:20px;padding:3px 10px;flex:none}
 .q-type{font-size:10px;font-weight:800;color:var(--acc);background:var(--accsoft);border-radius:6px;padding:3px 7px;flex:none}
+.q-mark{font-size:14px;font-weight:900;margin-left:auto}
+.q-mark.correct{color:#2f7d4f}
+.q-mark.wrong{color:#c0392b}
 .q-body{font-size:13.5px;line-height:1.75;color:#2c3028;word-break:keep-word}
 .q-body h1,.q-body h2,.q-body h3,.q-body h4{margin:6px 0 4px;color:#33372e}
 .q-body h3{font-size:1.05em}.q-body h4{font-size:1em}
@@ -274,12 +275,21 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .q-body hr{border:0;border-top:1px solid var(--line);margin:8px 0}
 .q-answer{background:#faf8ed;border:1px dashed #d6d2be;border-radius:9px;padding:9px 12px;font-size:13px;line-height:1.7;color:#5f6153}
 .q-answer b{color:var(--acc);display:block;margin-bottom:4px;font-size:12px}
+.q-input-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.q-opt-btn{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:700;color:#5f6153;transition:all .15s;min-width:44px}
+.q-opt-btn:hover{background:var(--hov);border-color:#cfcbb6}
+.q-opt-btn.selected{background:var(--accsoft);border-color:var(--acc);color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.q-opt-btn.correct{background:#e8f5ee;border-color:#2f7d4f;color:#2f7d4f}
+.q-opt-btn.wrong{background:#fdecea;border-color:#c0392b;color:#c0392b}
+.q-textin{flex:1;min-width:120px}
+.q-result{font-size:13px;font-weight:700;padding:6px 10px;border-radius:8px;margin-top:4px}
+.q-result.ok{background:#e8f5ee;color:#2f7d4f}
+.q-result.no{background:#fdecea;color:#c0392b}
+.q-result.essay{background:#f4f2e6;color:#6b6a5a}
 .q-foot{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
 .q-foot .ib{height:26px;font-size:11px;padding:0 9px}
 .gen-share{background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:11px 13px;flex:none;display:flex;flex-direction:column;gap:8px;align-items:center}
 .gen-share .row{justify-content:center;width:100%}
-#qrImg{width:180px;height:180px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;box-shadow:var(--sh1)}
-#qrLink{font-size:10.5px;color:#8d8c7d;word-break:break-all;text-align:center;max-width:260px}
 
 body.studentview #top,body.studentview #tray,body.studentview #stage{display:none}
 body.studentview #studentView{display:flex}
@@ -287,9 +297,13 @@ body.studentview #studentView{display:flex}
 .sv-head{background:var(--acc);color:#fff;padding:18px 22px;flex:none}
 .sv-head h2{font-size:20px;font-weight:900;margin-bottom:4px}
 .sv-head p{font-size:12px;color:rgba(255,255,255,.7)}
+.sv-score{background:var(--card);border-bottom:1px solid var(--line);padding:10px 22px;font-weight:800;font-size:14px;color:var(--acc);flex:none;display:flex;gap:12px;align-items:center}
+.sv-score .prime{margin-left:auto}
 .sv-body{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-width:820px;margin:0 auto;width:100%}
 .sv-q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh1)}
-.sv-foot{background:#fff;border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:10px;justify-content:flex-end;flex:none}
+.sv-q.graded-correct{border-color:#2f7d4f;background:#fbfdfb}
+.sv-q.graded-wrong{border-color:#c0392b;background:#fffafa}
+.sv-foot{background:#fff;border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:10px;justify-content:flex-end;flex:none;flex-wrap:wrap}
 
 #scoreGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;align-content:start}
 .score-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;align-items:center;box-shadow:var(--sh1)}
@@ -584,23 +598,24 @@ body.studentview #studentView{display:flex}
       </div>
       <div class="gen-mode-tabs">
         <button class="on" data-view="teacher">선생님 보기</button>
-        <button data-view="student">학생 보기 (정답 숨김)</button>
+        <button data-view="student">학생 풀이 모드</button>
       </div>
       <div id="genQList">
         <div class="gen-empty">
           과목·주제·난이도·유형을 고르고 <b>문제 만들기</b> 버튼을 누르세요.<br>
-          각 문제는 마크다운으로 서식 처리되고, QR코드로 학생에게 공유할 수 있습니다.
+          학생 풀이 모드에서 답을 입력하고 채점할 수 있습니다.
         </div>
       </div>
       <div class="gen-share">
         <div class="row" style="gap:8px">
-          <button class="ib" id="genShareAll">전체 문제 QR 만들기</button>
+          <button class="ib" id="genExportFile">문제 파일 내보내기</button>
+          <button class="ib" id="genImportFileBtn">문제 파일 가져오기</button>
           <button class="ib" id="genShareLink">공유 링크 복사</button>
-          <button class="prime" id="genOpenStudent">학생 화면 열기</button>
+          <button class="ib" id="genPrint">인쇄</button>
+          <button class="prime" id="genOpenStudent">학생 풀이 화면 열기</button>
         </div>
-        <img id="qrImg" alt="QR 코드" class="hide">
-        <div id="qrLink" class="hide"></div>
-        <div class="hint-in">QR을 스캔하면 같은 HTML 파일의 학생 전용 화면이 열립니다. 파일을 학생 기기에도 보내두거나, 웹에 올려두면 어디서든 접속 가능합니다.</div>
+        <input type="file" id="genImportFile" accept=".json" class="hide">
+        <div class="hint-in">로컬에서는 <b>파일 내보내기/가져오기</b>가 가장 확실합니다. 웹에 올려두면 <b>공유 링크</b>로 접근할 수 있습니다. 인쇄 버튼을 누르면 문제지 인쇄도 가능합니다.</div>
       </div>
     </div>
   </section>
@@ -627,9 +642,14 @@ body.studentview #studentView{display:flex}
     <h2 id="svTitle">문제지</h2>
     <p id="svMeta"></p>
   </div>
+  <div class="sv-score" id="svScoreRow">
+    <span id="svScoreTxt">점수: 아직 채점 전</span>
+    <button class="prime" id="svGradeBtn">채점하기</button>
+    <button class="ib" id="svResetBtn">다시 풀기</button>
+  </div>
   <div class="sv-body" id="svBody"></div>
   <div class="sv-foot">
-    <button class="ib" id="svShowAns">정답 보기</button>
+    <button class="ib" id="svShowAns">정답/해설 보기</button>
     <button class="ib" id="svPrint">인쇄</button>
     <button class="prime" id="svClose">돌아가기</button>
   </div>
@@ -653,6 +673,64 @@ async function copyText(t,btn){let ok=true;
    document.execCommand('copy');ta.remove();}catch(e2){ok=false;}}
  if(btn){const o=btn.textContent;btn.textContent=ok?'복사됨':'복사 실패';setTimeout(()=>btn.textContent=o,1200);}}
 
+/* ── 수식 단순화: $...$ LaTeX을 일반 기호로 변환 ── */
+function texToText(expr){
+ return expr
+  .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g,'$1/$2')
+  .replace(/\\dfrac\{([^}]+)\}\{([^}]+)\}/g,'$1/$2')
+  .replace(/\\tfrac\{([^}]+)\}\{([^}]+)\}/g,'$1/$2')
+  .replace(/\\sqrt\{([^}]+)\}/g,'√$1')
+  .replace(/\\sqrt\[([^]
+  .replace(/\\times/g,'×')
+  .replace(/\\div/g,'÷')
+  .replace(/\\pm/g,'±')
+  .replace(/\\mp/g,'∓')
+  .replace(/\\leq|\\le/g,'≤')
+  .replace(/\\geq|\\ge/g,'≥')
+  .replace(/\\neq|\\ne/g,'≠')
+  .replace(/\\approx/g,'≈')
+  .replace(/\\equiv/g,'≡')
+  .replace(/\\infty/g,'∞')
+  .replace(/\\pi/g,'π')
+  .replace(/\\alpha/g,'α').replace(/\\beta/g,'β').replace(/\\gamma/g,'γ')
+  .replace(/\\delta/g,'δ').replace(/\\theta/g,'θ').replace(/\\lambda/g,'λ')
+  .replace(/\\mu/g,'μ').replace(/\\sigma/g,'σ').replace(/\\omega/g,'ω')
+  .replace(/\\Delta/g,'Δ').replace(/\\Sigma/g,'Σ').replace(/\\Pi/g,'Π')
+  .replace(/\\Phi/g,'Φ').replace(/\\Omega/g,'Ω')
+  .replace(/\\sum(_\{[^}]*\})?(\^\{[^}]*\})?/g,'Σ')
+  .replace(/\\prod(_\{[^}]*\})?(\^\{[^}]*\})?/g,'Π')
+  .replace(/\\int(_\{[^}]*\})?(\^\{[^}]*\})?/g,'∫')
+  .replace(/\\cdot/g,'·')
+  .replace(/\\circ/g,'°')
+  .replace(/\\degree/g,'°')
+  .replace(/\\percent/g,'%')
+  .replace(/\\rightarrow|\\to/g,'→')
+  .replace(/\\leftarrow/g,'←')
+  .replace(/\\Rightarrow/g,'⇒')
+  .replace(/\\therefore/g,'∴')
+  .replace(/\\because/g,'∵')
+  .replace(/\\angle/g,'∠')
+  .replace(/\\triangle/g,'△')
+  .replace(/\\perp/g,'⊥')
+  .replace(/\\parallel/g,'∥')
+  .replace(/\\in/g,'∈').replace(/\\notin/g,'∉')
+  .replace(/\\subset/g,'⊂').replace(/\\supset/g,'⊃')
+  .replace(/\\cup/g,'∪').replace(/\\cap/g,'∩')
+  .replace(/\\emptyset|\\varnothing/g,'∅')
+  .replace(/\\ldots|\\dots/g,'…')
+  .replace(/\\cdots/g,'⋯')
+  .replace(/\^2/g,'²')
+  .replace(/\^3/g,'³')
+  .replace(/\^\{([^}]+)\}/g,'^$1')
+  .replace(/_\{([^}]+)\}/g,'_$1')
+  .replace(/\\left|\\right/g,'')
+  .replace(/\\[a-zA-Z]+/g,'')
+  .replace(/[{}]/g,'')
+  .replace(/\s+/g,' ')
+  .trim();
+}
+
+/* ── 마크다운 렌더러 ── */
 function renderMd(src){
  if(!src)return '';
  const codeBlocks=[];
@@ -667,6 +745,11 @@ function renderMd(src){
   inlines.push(esc(c));
   return `\u0000IC${idx}\u0000`;
  });
+ /* 수식 처리: $$...$$ 블록과 $...$ 인라인 */
+ s=s.replace(/\$\$([^$]+)\$\$/g,(_,e)=>texToText(e));
+ s=s.replace(/\$([^$]+)\$/g,(_,e)=>texToText(e));
+ /* 이스케이프된 \$ 와 백슬래시 잔재 정리 */
+ s=s.replace(/\\([$])/g,'$1');
  s=esc(s);
  s=s.replace(/^#### (.+)$/gm,'<h4>$1</h4>');
  s=s.replace(/^### (.+)$/gm,'<h3>$1</h3>');
@@ -711,6 +794,46 @@ function renderMd(src){
  return s;
 }
 
+/* ── 정답 추출 및 비교 유틸 ── */
+function extractChoiceOptions(text){
+ /* 선택형 보기에서 ①~④ 텍스트 추출 */
+ const lines=text.split('\n');
+ const opts={};
+ lines.forEach(l=>{
+  const m=l.match(/^[\s\-*(]*([①②③④])\s*(.+)$/);
+  if(m){opts[m[1]]=m[2].trim().replace(/[*)\s]+$/,'');}
+ });
+ /* 목록 <li> 형태에서도 추출 시도 */
+ if(Object.keys(opts).length===0){
+  const liMatch=text.match(/<li[^>]*>([①②③④])\s*(.+?)<\/li>/g);
+  if(liMatch){
+   liMatch.forEach(li=>{
+    const m=li.match(/>([①②③④])\s*(.+?)<\/li>/);
+    if(m)opts[m[1]]=m[2].trim();
+   });
+  }
+ }
+ return opts;
+}
+function normalizeAns(s){
+ return String(s||'').replace(/[\s.,，。!！?？()（）"'
+  .replace(/\s+/g,' ').trim().toLowerCase();
+}
+function extractAnswerNum(ans){
+ /* 정답에서 선택 번호 추출: "①", "1", "①번", "1번" 등 */
+ const m=String(ans||'').match(/([①②③④]|[1-4])/);
+ if(m){
+  const map={'①':1,'②':2,'③':3,'④':4,'1':1,'2':2,'3':3,'4':4};
+  return map[m[1]]||null;
+ }
+ return null;
+}
+function isChoiceType(q){
+ if(q.type&&(q.type.includes('선택')||q.type.includes('객관')))return true;
+ if(q.question&&/[①②③④]/.test(q.question))return true;
+ return false;
+}
+
 const WIDGETS=[
  {id:'note',title:'알림장'},{id:'board',title:'보드'},{id:'tt',title:'시간표'},{id:'picker',title:'랜덤 뽑기'},
  {id:'cal',title:'달력'},{id:'clock',title:'시계 / 타이머'},{id:'wx',title:'날씨'},{id:'dday',title:'D-Day'},
@@ -734,7 +857,7 @@ let state=makeDef();
 try{const s=JSON.parse(localStorage.getItem(KEY));
  if(s&&s.ver===6)state=s;
  else{const o=JSON.parse(localStorage.getItem('assign_v5'));
-  if(o&&o.ver===5)state=Object.assign(makeDef(),o,ver=6);}}catch(e){state=makeDef();}
+  if(o&&o.ver===5)state=Object.assign(makeDef(),o,{ver:6});}}catch(e){state=makeDef();}
 (function sanitize(){
  const d=makeDef();
  if(!state.ui)state.ui=d.ui;
@@ -1051,13 +1174,11 @@ function ttNow(){document.querySelectorAll('#ttTable .nowc,#ttTable .nowp').forE
  const thH=document.querySelector(`#ttTable th[data-dow="${DAYS[dw-1]}"]`);if(thH)thH.classList.add('nowc');
  if(p>-1)document.querySelectorAll(`#ttTable tr[data-p="${p}"] > *`).forEach(x=>x.classList.add('nowp'));}
 
-/* ── 뽑기 (숫자 자동 확장 포함) ── */
 const pkNames=$('#pkNames');pkNames.value=state.picker.names;
 pkNames.addEventListener('input',()=>{state.picker.names=pkNames.value;scheduleSave();});
 const names=()=>{
   const raw=pkNames.value.trim();
   if(!raw)return [];
-  // 숫자 하나만 입력 시 1~N으로 자동 확장 (예: 6, 25개, 30명)
   const m=raw.match(/^\s*(\d+)\s*(개|명|사람|번)?\s*$/);
   if(m){
     const n=parseInt(m[1],10);
@@ -1090,7 +1211,7 @@ function drawSeats(){
   ?map.map((n,i)=>n
     ?`<div class="seat${fix.includes(n)?' fixed':''}${i===seatSel?' sel':''}" data-i="${i}" title="클릭: 선택/맞바꾸기, 두 번 클릭: 고정">${esc(n)}</div>`
     :`<div class="seat empty" data-i="${i}">-</div>`).join('')
-  :'<div class="empty-in">추첨 대상을 입력하고 자리 배치 버튼을 누르세요<br><small style="color:#98998a">숫자 하나만 입력하면 1~N 자동 확장됩니다</small></div>';
+  :'<div class="empty-in">추첨 대상을 입력하고 자리 배치 버튼을 누르세요</div>';
  $('#seatGrid').querySelectorAll('.seat').forEach(el=>{
   el.addEventListener('click',()=>seatClick(+el.dataset.i));
   el.addEventListener('dblclick',()=>seatFix(+el.dataset.i));});}
@@ -1338,6 +1459,9 @@ $('#aiInput').addEventListener('keydown',e=>{
 $('#aiClear').addEventListener('click',()=>{state.aid.msgs=[];$('#aiChat').innerHTML='';scheduleSave();});
 state.aid.msgs.forEach(m=>aiAddMsg(m.role,m.content));
 
+/* ═══════════════════════════════════════
+   AI 문제 생성기 + 풀이 기능
+   ═══════════════════════════════════════ */
 const genSubj=$('#genSubj'),genTopic=$('#genTopic'),genCnt=$('#genCnt'),
       chkMc=$('#chkMc'),chkSa=$('#chkSa'),chkEs=$('#chkEs'),genLv=$('#genLv'),
       genQList=$('#genQList'),genClear=$('#genClear');
@@ -1361,12 +1485,13 @@ genCnt.addEventListener('change',genSyncState);
  if(!chkMc.checked&&!chkSa.checked&&!chkEs.checked){chkMc.checked=true;}
  genSyncState();scheduleSave();}));
 genLv.addEventListener('change',()=>{genSyncState();scheduleSave();});
+
 function renderQuestions(){
  const qs=state.gen.questions,view=state.gen.view;
  if(!qs.length){
   genQList.innerHTML=`<div class="gen-empty">
    과목·주제·난이도·유형을 고르고 <b>문제 만들기</b> 버튼을 누르세요.<br>
-   각 문제는 마크다운으로 서식 처리되고, QR코드로 학생에게 공유할 수 있습니다.
+   학생 풀이 모드에서 답을 입력하고 채점할 수 있습니다.
   </div>`;return;}
  genQList.innerHTML='';
  qs.forEach((q,i)=>{
@@ -1408,6 +1533,7 @@ function renderQuestions(){
 document.querySelectorAll('.gen-mode-tabs button').forEach(b=>b.addEventListener('click',()=>{
  document.querySelectorAll('.gen-mode-tabs button').forEach(x=>x.classList.remove('on'));
  b.classList.add('on');state.gen.view=b.dataset.view;renderQuestions();scheduleSave();}));
+
 function parseQuestions(text){
  let m=text.match(/```(?:json)?\s*([\s\S]*?)```/);
  let cand=m?m[1].trim():text.trim();
@@ -1415,7 +1541,7 @@ function parseQuestions(text){
  if(start>-1)cand=cand.slice(start);
  try{
   const arr=JSON.parse(cand);
-  if(Array.isArray(arr))return arr.map((q,i)=>({
+  if(Array.isArray(arr))return arr.map(q=>({
    type:q.type||q.유형||(q.choices?'선택형':'단답형'),
    question:q.question||q.문제||q.q||'',
    answer:q.answer||q.정답||q.a||'',
@@ -1424,7 +1550,6 @@ function parseQuestions(text){
  }catch(e){}
  const qs=[];
  const blocks=text.split(/(?:^|\n)(?=(?:\d+|[①②③④⑤⑥⑦⑧⑨⑩])[.)]\s+)/);
- let cur=null;
  blocks.forEach(b=>{
   const trimmed=b.trim();if(!trimmed)return;
   const typeMatch=trimmed.match(/\[(선택형|단답형|서술형|객관식|주관식)\]/);
@@ -1432,12 +1557,11 @@ function parseQuestions(text){
   const expMatch=trimmed.match(/(?:\*\*?해설\*\*?|해설\s*[:：]|풀이\s*[:：])\s*([\s\S]*?)$/i);
   let q=trimmed;
   if(ansMatch)q=trimmed.slice(0,ansMatch.index).trim();
-  cur={
+  qs.push({
    type:typeMatch?typeMatch[1]:(ansMatch&&ansMatch[1].match(/^[①②③④]|\(\d\)/)?'선택형':'단답형'),
    question:q.replace(/^\[(선택형|단답형|서술형|객관식|주관식)\]\s*/,''),
    answer:ansMatch?ansMatch[1].trim():'',
-   explain:expMatch?expMatch[1].trim():''};
-  qs.push(cur);
+   explain:expMatch?expMatch[1].trim():''});
  });
  return qs.filter(q=>q.question);
 }
@@ -1474,7 +1598,8 @@ $('#genBtn').addEventListener('click',async()=>{
 요구사항:
 - 한국어로 작성. 초등~중등 수준에 적합하게.
 - 선택형은 4개의 보기를 만들고 정답은 하나만.
-- **굵게**, *기울임*, \`코드\`, 목록(-), 번호 매기기(1. 2. 3.) 등 마크다운 문법을 자유롭게 사용.
+- **굵게**, *기울임*, 목록(-), 번호 매기기(1. 2. 3.) 등 마크다운 문법을 자유롭게 사용.
+- 수식은 $...$ 형태로 쓰면 자동으로 변환됨. 너무 복잡한 LaTeX은 피할 것.
 - JSON 외 다른 텍스트(서론, 결론, 주석) 절대 쓰지 말 것.`;
  try{
   const ans=await askAI([
@@ -1491,54 +1616,201 @@ genClear.addEventListener('click',()=>{
  if(!state.gen.questions.length)return;
  if(!confirm('생성된 문제를 모두 지울까요?'))return;
  state.gen.questions=[];state.gen.title='';renderQuestions();scheduleSave();});
-function buildShareUrl(){
- const payload={
+
+/* ── 문제 파일 내보내기/가져오기 ── */
+function buildSharePayload(){
+ return{
   t:state.gen.title||'문제지',
   s:state.gen.subj,
   q:state.gen.questions.map(q=>({t:q.type,q:q.question,a:q.answer,e:q.explain}))};
- const json=JSON.stringify(payload);
- const b64=btoa(unescape(encodeURIComponent(json)))
-   .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
- const base=location.href.split('#')[0];
- return base+'#q='+b64;
 }
-function showQR(url){
- const img=$('#qrImg');
- img.src=`https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=${encodeURIComponent(url)}`;
- img.classList.remove('hide');
- const link=$('#qrLink');link.textContent=url;link.classList.remove('hide');}
-$('#genShareAll').addEventListener('click',()=>{
+$('#genExportFile').addEventListener('click',()=>{
  if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
- showQR(buildShareUrl());});
+ download('문제_'+new Date().toISOString().slice(0,10)+'.json',
+  JSON.stringify(buildSharePayload(),null,1),'application/json');});
+$('#genImportFileBtn').addEventListener('click',()=>$('#genImportFile').click());
+$('#genImportFile').addEventListener('change',e=>{
+ const f=e.target.files[0];if(!f)return;
+ const rd=new FileReader();
+ rd.onload=()=>{
+  try{
+   const p=JSON.parse(rd.result);
+   if(!p.q||!Array.isArray(p.q))throw new Error('형식 오류');
+   state.gen.questions=p.q.map(x=>({
+    type:x.t||'문제',question:x.q||'',answer:x.a||'',explain:x.e||''}));
+   state.gen.title=p.t||'문제지';
+   state.gen.subj=p.s||'기타';
+   scheduleSave();renderQuestions();
+   alert(`문제 ${state.gen.questions.length}문항을 불러왔습니다.`);
+  }catch(err){alert('파일을 읽을 수 없습니다: '+err.message);}
+ };
+ rd.readAsText(f);
+ e.target.value='';});
 $('#genShareLink').addEventListener('click',e=>{
  if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
- copyText(buildShareUrl(),e.target);});
-function renderStudentView(qs,title,meta){
+ const p=buildSharePayload();
+ const b64=btoa(unescape(encodeURIComponent(JSON.stringify(p))))
+  .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ copyText(location.href.split('#')[0]+'#q='+b64,e.target);});
+$('#genPrint').addEventListener('click',()=>{
+ if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
+ renderStudentView(state.gen.questions,state.gen.title,`${state.gen.subj} · ${state.gen.questions.length}문항`,true);
+ setTimeout(()=>window.print(),400);});
+
+/* ── 학생 풀이 화면 렌더링 (답 입력 + 채점) ── */
+let svAnswers=[];
+function renderStudentView(qs,title,meta,printMode){
  $('#svTitle').textContent=title||'문제지';
  $('#svMeta').textContent=meta||'';
  const body=$('#svBody');body.innerHTML='';
+ svAnswers=new Array(qs.length).fill(null);
+ $('#svScoreTxt').textContent='점수: 아직 채점 전';
  qs.forEach((q,i)=>{
   const card=document.createElement('div');card.className='sv-q';
-  card.innerHTML=`<div class="q-head">
+  card.dataset.idx=i;
+  const isChoice=isChoiceType(q);
+  const isEssay=q.type&&(q.type.includes('서술'));
+  /* 문제 본문을 렌더링할 때 보기 부분은 숨기고 별도 버튼으로 제공 */
+  let qHtml=renderMd(q.question||'');
+  /* 선택형이면 보기 텍스트를 제거하고 버튼으로 대체 */
+  let viewLines=[];
+  if(isChoice){
+   /* 문제에서 ①~④ 줄 제거 */
+   qHtml=qHtml.split('\n').filter(l=>!/^[\s<]*[①②③④]/.test(l.replace(/<[^>]*>/g,'').trim())).join('\n');
+   /* 원문에서 보기 추출 */
+   const lines=String(q.question||'').split('\n');
+   lines.forEach(l=>{
+    const m=l.match(/^\s*([①②③④])\s*(.+)$/);
+    if(m)viewLines.push({n:m[1],t:m[2].trim()});
+   });
+  }
+  let inner=`<div class="q-head">
     <span class="q-no">문항 ${i+1}</span>
     <span class="q-type">${esc(q.type||'문제')}</span>
+    <span class="q-mark" data-mark="${i}"></span>
    </div>
-   <div class="q-body">${renderMd(q.question||'')}</div>
-   <div class="q-answer hide" data-ans="${esc(q.answer||'')}" data-exp="${esc(q.explain||'')}">
-    <b>정답</b>${renderMd(q.answer||'')}
-    ${q.explain?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)"><b style="color:#6b6a5a">풀이</b>${renderMd(q.explain)}</div>`:''}
-   </div>`;
+   <div class="q-body">${qHtml}</div>`;
+  /* 답 입력 영역 */
+  if(isChoice&&viewLines.length>0){
+   inner+=`<div class="q-input-row" data-choice="${i}">`;
+   viewLines.forEach(v=>{
+    inner+=`<button class="q-opt-btn" data-n="${v.n}" title="${esc(v.t)}">${v.n} ${esc(v.t)}</button>`;
+   });
+   inner+=`</div>`;
+  }else if(isEssay){
+   inner+=`<div class="q-input-row"><textarea class="q-textin" rows="3" data-essay="${i}" placeholder="답을 서술하세요"></textarea></div>`;
+  }else{
+   inner+=`<div class="q-input-row"><input type="text" class="q-textin" data-short="${i}" placeholder="답을 입력하세요"></div>`;
+  }
+  /* 채점 결과 표시 영역 */
+  inner+=`<div class="q-result hide" data-result="${i}"></div>`;
+  card.innerHTML=inner;
   body.append(card);
+  /* 선택형 버튼 이벤트 */
+  if(isChoice&&viewLines.length>0){
+   card.querySelectorAll('.q-opt-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+     card.querySelectorAll('.q-opt-btn').forEach(b=>b.classList.remove('selected'));
+     btn.classList.add('selected');
+     svAnswers[i]={choice:btn.dataset.n,text:btn.textContent.trim()};
+    });
+   });
+  }
+  /* 단답형/서술형 입력 이벤트 */
+  const shortIn=card.querySelector(`[data-short="${i}"]`);
+  if(shortIn)shortIn.addEventListener('input',()=>{svAnswers[i]={text:shortIn.value};});
+  const essayIn=card.querySelector(`[data-essay="${i}"]`);
+  if(essayIn)essayIn.addEventListener('input',()=>{svAnswers[i]={text:essayIn.value};});
  });
- document.body.classList.add('studentview');}
+ /* 정답/해설 숨김 영역 추가 */
+ qs.forEach((q,i)=>{
+  if(!q.answer)return;
+  const card=body.querySelector(`[data-idx="${i}"]`);
+  const ansDiv=document.createElement('div');
+  ansDiv.className='q-answer hide';
+  ansDiv.dataset.ansbox=i;
+  ansDiv.innerHTML=`<b>정답 · 해설</b>${renderMd(q.answer)}
+   ${q.explain?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)"><b style="color:#6b6a5a">풀이</b>${renderMd(q.explain)}</div>`:''}`;
+  card.append(ansDiv);
+ });
+ document.body.classList.add('studentview');
+ if(printMode){
+  /* 인쇄 시에는 입력란과 채점 버튼 숨김 */
+  document.querySelectorAll('#svBody .q-input-row,#svScoreRow .prime,#svScoreRow .ib').forEach(el=>{
+   el.style.display='none';});
+ }
+}
+
+/* ── 채점 로직 ── */
+function gradeAll(){
+ const qs=state.gen.questions;
+ let correct=0,total=qs.length,graded=0;
+ qs.forEach((q,i)=>{
+  const card=document.querySelector(`[data-idx="${i}"]`);
+  if(!card)return;
+  const mark=card.querySelector(`[data-mark="${i}"]`);
+  const res=card.querySelector(`[data-result="${i}"]`);
+  const ans=svAnswers[i];
+  const isChoice=isChoiceType(q);
+  const isEssay=q.type&&(q.type.includes('서술'));
+  card.classList.remove('graded-correct','graded-wrong');
+  if(!ans||(!ans.choice&&!ans.text||String(ans.text).trim()==='')){
+   mark.textContent='';mark.className='q-mark';
+   res.className='q-result hide';
+   return;
+  }
+  graded++;
+  let ok=false;
+  if(isChoice){
+   const correctNum=extractAnswerNum(q.answer);
+   const selMap={'①':1,'②':2,'③':3,'④':4};
+   const selNum=selMap[ans.choice]||null;
+   ok=(correctNum!==null&&selNum===correctNum);
+   /* 선택한 버튼과 정답 버튼 색상 처리 */
+   card.querySelectorAll('.q-opt-btn').forEach(b=>{
+    b.classList.remove('correct','wrong','selected');
+    if(b.dataset.n===ans.choice)b.classList.add(ok?'correct':'wrong');
+   });
+  }else if(isEssay){
+   /* 서술형: 자동 채점 불가 → 제출 완료 처리 */
+   ok=null;
+  }else{
+   ok=normalizeAns(ans.text)===normalizeAns(q.answer);
+  }
+  if(ok===true){
+   correct++;
+   mark.textContent='○';mark.className='q-mark correct';
+   card.classList.add('graded-correct');
+   res.className='q-result ok';res.textContent='정답입니다!';
+  }else if(ok===false){
+   mark.textContent='×';mark.className='q-mark wrong';
+   card.classList.add('graded-wrong');
+   res.className='q-result no';res.textContent='오답입니다. 정답/해설을 확인하세요.';
+   const ab=card.querySelector(`[data-ansbox="${i}"]`);
+   if(ab)ab.classList.remove('hide');
+  }else{
+   mark.textContent='△';mark.className='q-mark wrong';
+   res.className='q-result essay';res.textContent='제출 완료 (서술형은 선생님이 채점합니다)';
+  }
+ });
+ const txt=graded===0?'점수: 아직 채점 전':
+  `점수: ${correct}/${graded} 정답 (전체 ${total}문항 중 ${graded}문항 응시)`;
+ $('#svScoreTxt').textContent=txt;
+}
+
+$('#svGradeBtn').addEventListener('click',gradeAll);
+$('#svResetBtn').addEventListener('click',()=>{
+ renderStudentView(state.gen.questions,$('#svTitle').textContent,$('#svMeta').textContent);});
+$('#svShowAns').addEventListener('click',()=>{
+ document.querySelectorAll('#svBody [data-ansbox]').forEach(el=>el.classList.toggle('hide'));});
+$('#svPrint').addEventListener('click',()=>window.print());
+$('#svClose').addEventListener('click',()=>document.body.classList.remove('studentview'));
 $('#genOpenStudent').addEventListener('click',()=>{
  if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
  renderStudentView(state.gen.questions,state.gen.title,
   `${state.gen.subj} · ${state.gen.questions.length}문항`);});
-$('#svShowAns').addEventListener('click',()=>{
- document.querySelectorAll('#svBody .q-answer').forEach(el=>el.classList.toggle('hide'));});
-$('#svPrint').addEventListener('click',()=>window.print());
-$('#svClose').addEventListener('click',()=>document.body.classList.remove('studentview'));
+
+/* URL 해시로 들어온 문제지 자동 열기 */
 function checkSharedQuiz(){
  const h=location.hash;
  if(!h.startsWith('#q='))return;
