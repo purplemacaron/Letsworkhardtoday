@@ -17,7 +17,6 @@ input,select,textarea{font-family:inherit;color:var(--ink)}
 .hide{display:none!important}
 button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
 
-/* ── 상단바 ── */
 #top{height:52px;background:var(--acc);display:flex;align-items:center;gap:12px;padding:0 16px;position:relative;z-index:60}
 #logo{font-size:16.5px;font-weight:900;letter-spacing:.2px;color:#fff;white-space:nowrap}
 .vsep{width:1px;height:20px;background:rgba(255,255,255,.22)}
@@ -32,7 +31,6 @@ button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
 .tbtn:hover{background:rgba(255,255,255,.26)}
 #saveDot{font-size:10.5px;color:rgba(255,255,255,.62);min-width:48px;text-align:right;white-space:nowrap}
 
-/* ── 플러그인 트레이 ── */
 #tray{height:44px;background:#f4f2e7;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 16px;overflow-x:auto;position:relative;z-index:55}
 .tray-label{font-size:10px;color:#a5a695;font-weight:800;letter-spacing:1.2px;flex:none;margin-right:2px}
 .pchip{display:flex;align-items:center;gap:6px;border:1px solid #e0ddcc;background:#fff;border-radius:18px;padding:5px 13px;font-size:12px;font-weight:700;color:#55544a;cursor:grab;white-space:nowrap;flex:none;user-select:none;box-shadow:var(--sh1);transition:background .15s,border-color .15s,box-shadow .15s}
@@ -43,7 +41,6 @@ button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
 .pchip.inuse .pn{color:rgba(255,255,255,.55)}
 .slot-tag{font-size:9px;background:rgba(255,255,255,.2);border-radius:8px;padding:2px 6px;font-weight:800}
 
-/* ── 화면 채우기 / 알림장 집중 모드 ── */
 body.full #top,body.full #tray{display:none}
 body.full #stage{height:100%}
 body.notefocus #top,body.notefocus #tray{display:none}
@@ -60,7 +57,6 @@ body.notefocus #noteExit{display:block}
 body.full.notefocus #fullExit{top:54px}
 .exitpill:hover{background:rgba(20,23,21,.92)}
 
-/* ── 무대 / 슬롯 ── */
 #stage{height:calc(100% - 96px);position:relative;z-index:1}
 #pool{display:none}
 #panes{display:grid;height:100%;gap:12px;padding:12px}
@@ -80,7 +76,6 @@ body[data-mode=four] #panes{grid-template-columns:1fr 1fr;grid-template-rows:1fr
 .pane.flash .widget{animation:flashIn .5s}
 @keyframes flashIn{0%{box-shadow:0 0 0 3px var(--acc)}100%{box-shadow:var(--sh1)}}
 
-/* ── 위젯 공통 ── */
 .widget{background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;min-height:0;overflow:hidden;height:100%;box-shadow:var(--sh1)}
 .wh{display:flex;align-items:center;gap:8px;padding:12px 16px 11px;flex:none;flex-wrap:wrap;border-bottom:1px solid var(--line2)}
 .wh h2{font-size:13.5px;font-weight:800;color:#33372e;letter-spacing:.1px}
@@ -103,7 +98,6 @@ textarea{resize:vertical;width:100%}
 .empty-in{font-size:12px;color:#acada0;text-align:center;padding:16px}
 .hint-in{font-size:10.5px;color:#a5a695;line-height:1.6}
 
-/* ── 알림장 ── */
 .npagebar{display:flex;gap:5px;flex:none;align-items:center}
 #pageSel{flex:1;font-weight:700}
 .naddbar{display:flex;gap:5px;flex:none}
@@ -143,13 +137,11 @@ body.notefocus #noteArea{border-radius:0}
 .dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.6);cursor:pointer;flex:none}
 .dot.on{outline:2px solid #fff}
 
-/* ── 보드 ── */
 .board-body{position:relative;padding:0}
 #boardCanvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
 .bcol{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);cursor:pointer;flex:none}
 .bcol.on{outline:2px solid var(--acc);outline-offset:1px}
 
-/* ── 시간표 ── */
 .ttwrap{flex:1;overflow:auto}
 #ttTable{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
 #ttTable th,#ttTable td{border:1px solid #e8e6d8;padding:5px;height:34px;text-align:center;overflow:hidden;white-space:nowrap}
@@ -159,7 +151,6 @@ body.notefocus #noteArea{border-radius:0}
 td.nowc,th.nowc{background:#f6e7a8}
 td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 
-/* ── 달력 ── */
 .cal-dow,#calGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cal-dow span{text-align:center;font-size:10px;font-weight:800;color:#a5a695;padding:2px 0}
 .cal-dow span:first-child{color:#c05252}.cal-dow span:last-child{color:#4a72b8}
@@ -174,7 +165,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .cal-memo{margin-top:auto;border-top:1px solid var(--line2);padding-top:9px;display:flex;flex-direction:column;gap:6px}
 .cal-memo b{font-size:12px}
 
-/* ── 날씨 / 시계 ── */
 .wx-body{flex-direction:row;align-items:center;gap:18px;flex-wrap:wrap}
 #wxTemp{font-size:38px;font-weight:900;font-variant-numeric:tabular-nums;display:block}
 #wxDesc{font-size:13px;color:#6b6a5a}
@@ -192,7 +182,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 13px;font-size:11px;font-weight:700;color:#5f6153;box-shadow:var(--sh1);transition:background .15s,border-color .15s}
 .chip:hover{background:var(--hov);border-color:#cfcbb6}
 
-/* ── 뽑기 / 자리 ── */
 .tabs{display:flex;gap:4px;flex:none;background:#efede1;padding:4px;border-radius:11px}
 .tabs button{flex:1;border:0;background:transparent;border-radius:8px;padding:6px;font-size:12px;font-weight:800;color:#8d8c7d;transition:background .15s,color .15s}
 .tabs button.on{background:#fff;color:var(--acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
@@ -213,7 +202,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .seat.fixed::after{content:'고정';position:absolute;top:3px;right:6px;font-size:8px;font-weight:900;color:#a5a695}
 .seat-hint{font-size:11px;color:#acada0;margin-top:8px;line-height:1.6}
 
-/* ── D-Day ── */
 .dday-add input[type=text]{flex:1;min-width:100px}
 .dday-item{display:flex;align-items:center;gap:10px;border:1px solid var(--line2);border-radius:10px;padding:9px 11px;margin-bottom:5px;background:#fff;box-shadow:var(--sh1)}
 .dd-num{font-size:19px;font-weight:900;min-width:76px;text-align:center;color:var(--acc);font-variant-numeric:tabular-nums}
@@ -222,7 +210,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .dd-label{flex:1;font-size:13px;font-weight:700}
 .dd-date{font-size:11px;color:var(--mut)}
 
-/* ── 알림판 / 카운터 / 스톱워치 ── */
 .ann-ctl{display:flex;align-items:center;gap:8px;flex:none}
 .ann-ctl input[type=range]{flex:1;accent-color:var(--acc)}
 #annSzLbl{font-size:11px;font-weight:900;color:var(--acc);min-width:36px;text-align:right;font-variant-numeric:tabular-nums}
@@ -244,13 +231,12 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .sw-lap{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line2);border-radius:7px;padding:4px 10px;font-variant-numeric:tabular-nums;box-shadow:var(--sh1)}
 .sw-lap b{font-weight:800}
 
-/* ── AI 도우미 ── */
 .ai-cfg{display:flex;flex-direction:column;gap:7px;background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:10px 12px;flex:none}
 .ai-cfg .row{margin:0}
 #aiKey{flex:1}
 #aiEndpoint{flex:1}
-#aiModel{flex:1}
-.mchips{display:flex;gap:4px;flex-wrap:wrap}
+#aiModel{flex:1;min-width:180px}
+.mchips{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
 .mchip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:10.5px;font-weight:700;color:#5f6153}
 .mchip:hover{background:var(--hov);border-color:#cfcbb6}
 #aiChat{flex:1;min-height:140px;overflow:auto;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px}
@@ -261,10 +247,50 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 .ai-inrow{display:flex;gap:6px;flex:none}
 #aiInput{flex:1;resize:none;height:40px;line-height:1.5}
 
-/* ── AI 문제 생성기 ── */
-#genOut{flex:1;min-height:120px;overflow:auto;background:#fff;border:1px solid var(--line2);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.85;white-space:pre-wrap;word-break:break-word}
+.gen-cfg{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:11px 13px;flex:none}
+.gen-mode-tabs{display:flex;background:#efede1;padding:4px;border-radius:10px;flex:none}
+.gen-mode-tabs button{flex:1;border:0;background:transparent;border-radius:8px;padding:6px;font-size:12px;font-weight:800;color:#8d8c7d;transition:background .15s,color .15s}
+.gen-mode-tabs button.on{background:#fff;color:var(--acc);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+#genQList{flex:1;min-height:180px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:2px}
+.gen-empty{text-align:center;color:#a5a695;font-size:13px;padding:30px 10px;line-height:1.8}
+.q-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--sh1);display:flex;flex-direction:column;gap:8px}
+.q-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-no{font-size:11px;font-weight:900;color:#fff;background:var(--acc);border-radius:20px;padding:3px 10px;flex:none}
+.q-type{font-size:10px;font-weight:800;color:var(--acc);background:var(--accsoft);border-radius:6px;padding:3px 7px;flex:none}
+.q-body{font-size:13.5px;line-height:1.75;color:#2c3028;word-break:keep-word}
+.q-body h1,.q-body h2,.q-body h3,.q-body h4{margin:6px 0 4px;color:#33372e}
+.q-body h3{font-size:1.05em}.q-body h4{font-size:1em}
+.q-body ul,.q-body ol{padding-left:22px;margin:4px 0}
+.q-body li{margin:2px 0}
+.q-body strong{color:var(--acc);font-weight:800}
+.q-body em{font-style:italic}
+.q-body code{background:#f4f2e6;border:1px solid var(--line2);padding:1px 6px;border-radius:5px;font-family:'SF Mono','Consolas',monospace;font-size:.9em;color:#b04040}
+.q-body pre{background:#2c3028;color:#f5f2e6;padding:10px 12px;border-radius:8px;overflow:auto;margin:6px 0}
+.q-body pre code{background:transparent;border:0;color:inherit;padding:0}
+.q-body blockquote{border-left:3px solid var(--acc);padding:4px 12px;margin:6px 0;background:var(--surface);color:#55544a}
+.q-body table{border-collapse:collapse;margin:6px 0;font-size:12.5px}
+.q-body table th,.q-body table td{border:1px solid var(--line);padding:4px 8px}
+.q-body table th{background:var(--surface);font-weight:800}
+.q-body hr{border:0;border-top:1px solid var(--line);margin:8px 0}
+.q-answer{background:#faf8ed;border:1px dashed #d6d2be;border-radius:9px;padding:9px 12px;font-size:13px;line-height:1.7;color:#5f6153}
+.q-answer b{color:var(--acc);display:block;margin-bottom:4px;font-size:12px}
+.q-foot{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.q-foot .ib{height:26px;font-size:11px;padding:0 9px}
+.gen-share{background:var(--surface);border:1px solid var(--line2);border-radius:11px;padding:11px 13px;flex:none;display:flex;flex-direction:column;gap:8px;align-items:center}
+.gen-share .row{justify-content:center;width:100%}
+#qrImg{width:180px;height:180px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;box-shadow:var(--sh1)}
+#qrLink{font-size:10.5px;color:#8d8c7d;word-break:break-all;text-align:center;max-width:260px}
 
-/* ── 모둠 점수판 ── */
+body.studentview #top,body.studentview #tray,body.studentview #stage{display:none}
+body.studentview #studentView{display:flex}
+#studentView{display:none;position:fixed;inset:0;z-index:700;background:var(--app);flex-direction:column;overflow:auto}
+.sv-head{background:var(--acc);color:#fff;padding:18px 22px;flex:none}
+.sv-head h2{font-size:20px;font-weight:900;margin-bottom:4px}
+.sv-head p{font-size:12px;color:rgba(255,255,255,.7)}
+.sv-body{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-width:820px;margin:0 auto;width:100%}
+.sv-q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--sh1)}
+.sv-foot{background:#fff;border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:10px;justify-content:flex-end;flex:none}
+
 #scoreGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;align-content:start}
 .score-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;align-items:center;box-shadow:var(--sh1)}
 .score-name{border:0;border-bottom:1px dashed var(--line);background:transparent;font-weight:800;text-align:center;font-size:14px;width:100%;border-radius:0;padding:2px}
@@ -304,7 +330,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
 <main id="stage">
 <div id="pool">
 
-  <!-- 01 알림장 -->
   <section class="widget" data-w="note" id="w_note">
     <header class="wh"><span class="mod-badge">01</span><h2>알림장</h2>
       <div class="wtools">
@@ -351,13 +376,11 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 02 보드 -->
   <section class="widget" data-w="board" id="w_board">
     <header class="wh"><span class="mod-badge">02</span><h2>보드</h2><div class="wtools" id="bTools"></div></header>
     <div class="wb board-body"><canvas id="boardCanvas"></canvas></div>
   </section>
 
-  <!-- 03 시간표 -->
   <section class="widget" data-w="tt" id="w_tt">
     <header class="wh"><span class="mod-badge">03</span><h2>시간표</h2>
       <div class="wtools"><select id="ttSlot"></select><button class="ib" id="ttRename">이름 바꾸기</button></div>
@@ -365,7 +388,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     <div class="wb"><div class="ttwrap" id="ttWrap"></div></div>
   </section>
 
-  <!-- 04 랜덤 뽑기 / 자리바꾸기 -->
   <section class="widget" data-w="picker" id="w_picker">
     <header class="wh"><span class="mod-badge">04</span><h2>랜덤 뽑기 · 자리바꾸기</h2></header>
     <div class="wb">
@@ -373,8 +395,8 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
         <button id="tabPick" class="on">뽑기</button><button id="tabSeat">자리바꾸기</button>
       </div>
       <div id="panePick">
-        <label class="lbl">추첨 대상 (번호 또는 이름, 쉼표나 줄바꿈으로 구분)</label>
-        <textarea id="pkNames" rows="3" placeholder="예) 1, 2, 3, 4, 5"></textarea>
+        <label class="lbl">추첨 대상 (쉼표·줄바꿈 구분 / 숫자만 쓰면 1~N 자동 확장)</label>
+        <textarea id="pkNames" rows="3" placeholder="예) 홍길동,김철수 / 또는 숫자만: 25 → 1~25 자동"></textarea>
         <div class="row">
           <button id="btnPickOne" class="prime">1개 뽑기</button>
           <input id="pkCnt" type="number" min="1" value="2" class="num">
@@ -405,7 +427,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 05 달력 -->
   <section class="widget" data-w="cal" id="w_cal">
     <header class="wh"><span class="mod-badge">05</span><h2>달력</h2>
       <div class="wtools">
@@ -424,7 +445,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 06 시계 / 타이머 -->
   <section class="widget" data-w="clock" id="w_clock">
     <header class="wh"><span class="mod-badge">06</span><h2>시계 / 타이머</h2></header>
     <div class="wb">
@@ -441,7 +461,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 07 날씨 -->
   <section class="widget" data-w="wx" id="w_wx">
     <header class="wh"><span class="mod-badge">07</span><h2>날씨</h2>
       <div class="wtools"><button class="ib" id="wxHere">현재 위치 조회</button></div>
@@ -455,7 +474,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 08 D-Day -->
   <section class="widget" data-w="dday" id="w_dday">
     <header class="wh"><span class="mod-badge">08</span><h2>D-Day</h2></header>
     <div class="wb">
@@ -468,7 +486,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 09 알림판 -->
   <section class="widget" data-w="ann" id="w_ann">
     <header class="wh"><span class="mod-badge">09</span><h2>알림판</h2></header>
     <div class="wb">
@@ -479,7 +496,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 10 인원 카운터 -->
   <section class="widget" data-w="counter" id="w_counter">
     <header class="wh"><span class="mod-badge">10</span><h2>인원 카운터</h2>
       <div class="wtools"><span class="lbl" style="margin:0">목표</span>
@@ -496,7 +512,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 11 스톱워치 -->
   <section class="widget" data-w="sw" id="w_sw">
     <header class="wh"><span class="mod-badge">11</span><h2>스톱워치</h2></header>
     <div class="wb">
@@ -510,7 +525,6 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 12 AI 도우미 -->
   <section class="widget" data-w="ai" id="w_ai">
     <header class="wh"><span class="mod-badge">12</span><h2>AI 도우미</h2>
       <div class="wtools"><button class="ib" id="aiClear">대화 지우기</button></div>
@@ -526,14 +540,13 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
           <input id="aiEndpoint" type="text" class="hide" placeholder="프록시 주소 (예: /api/chat)">
         </div>
         <div class="row">
-          <span>모델</span><input id="aiModel" type="text" placeholder="qwen/qwen3.8">
-          <div class="mchips">
-            <button class="mchip" data-m="qwen/qwen3.8">qwen3.8</button>
-            <button class="mchip" data-m="qwen/qwen3-32b">qwen3-32b</button>
-            <button class="mchip" data-m="llama-3.3-70b-versatile">llama-3.3-70b</button>
-          </div>
+          <span>모델</span>
+          <input id="aiModel" type="text" list="aiModelDl" placeholder="모델 ID 입력 또는 목록에서 선택">
+          <datalist id="aiModelDl"></datalist>
+          <button class="ib" id="aiModels" title="내 계정에서 사용 가능한 모델 조회">모델 목록</button>
         </div>
-        <div class="hint-in">직접 연결은 키가 이 브라우저에만 저장됩니다. 키 노출이 걱정되면 아래 배포 안내대로 Vercel 프록시를 사용하세요. 모델 ID는 Groq 콘솔 Models에서 확인 가능합니다.</div>
+        <div class="row"><div class="mchips" id="aiQChips"><span class="hint-in">모델 목록 버튼을 누르면 사용 가능한 모델이 표시됩니다. 404 오류는 모델 이름이 다를 때 생기므로 반드시 목록에서 선택하세요.</span></div></div>
+        <div class="hint-in">직접 연결은 키가 이 브라우저에만 저장됩니다. 키 노출이 걱정되면 Vercel 프록시를 사용하세요.</div>
       </div>
       <div id="aiChat"></div>
       <div class="ai-inrow">
@@ -543,35 +556,55 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     </div>
   </section>
 
-  <!-- 13 AI 문제 생성기 -->
   <section class="widget" data-w="gen" id="w_gen">
     <header class="wh"><span class="mod-badge">13</span><h2>AI 문제 생성기</h2>
-      <div class="wtools"><button class="ib" id="genCopy">복사</button></div>
+      <div class="wtools"><button class="ib" id="genClear">모두 지우기</button></div>
     </header>
     <div class="wb">
-      <div class="row">
-        <select id="genSubj"></select>
-        <input id="genTopic" type="text" style="flex:1;min-width:120px" placeholder="주제 / 단원 (예: 분수의 덧셈)">
-        <select id="genCnt">
-          <option value="3">3문항</option><option value="5" selected>5문항</option>
-          <option value="7">7문항</option><option value="10">10문항</option>
-        </select>
+      <div class="gen-cfg">
+        <div class="row">
+          <select id="genSubj"></select>
+          <input id="genTopic" type="text" style="flex:1;min-width:120px" placeholder="주제 / 단원 (예: 분수의 덧셈, 광합성)">
+          <select id="genLv">
+            <option>쉬움</option><option selected>보통</option><option>어려움</option>
+          </select>
+          <button class="prime" id="genBtn">문제 만들기</button>
+        </div>
+        <div class="row">
+          <label class="lbl" style="margin:0">유형</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:12px;cursor:pointer">
+            <input type="checkbox" id="chkMc" checked> 선택형</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:12px;cursor:pointer">
+            <input type="checkbox" id="chkSa" checked> 단답형</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:12px;cursor:pointer">
+            <input type="checkbox" id="chkEs"> 서술형</label>
+          <input id="genCnt" type="number" min="1" max="15" value="5" class="num">
+          <span style="font-size:12px;color:#8d8c7d">문항</span>
+        </div>
       </div>
-      <div class="row">
-        <select id="genType">
-          <option>단답형</option><option>선택형(4지선다)</option><option>서술형</option><option>혼합형</option>
-        </select>
-        <select id="genLv">
-          <option>쉬움</option><option selected>보통</option><option>어려움</option>
-        </select>
-        <button class="prime" id="genBtn">문제 만들기</button>
+      <div class="gen-mode-tabs">
+        <button class="on" data-view="teacher">선생님 보기</button>
+        <button data-view="student">학생 보기 (정답 숨김)</button>
       </div>
-      <div class="hint-in">AI 도우미 플러그인에 설정된 키/모델을 사용합니다.</div>
-      <div id="genOut">설정을 고른 후 문제 만들기 버튼을 누르세요.</div>
+      <div id="genQList">
+        <div class="gen-empty">
+          과목·주제·난이도·유형을 고르고 <b>문제 만들기</b> 버튼을 누르세요.<br>
+          각 문제는 마크다운으로 서식 처리되고, QR코드로 학생에게 공유할 수 있습니다.
+        </div>
+      </div>
+      <div class="gen-share">
+        <div class="row" style="gap:8px">
+          <button class="ib" id="genShareAll">전체 문제 QR 만들기</button>
+          <button class="ib" id="genShareLink">공유 링크 복사</button>
+          <button class="prime" id="genOpenStudent">학생 화면 열기</button>
+        </div>
+        <img id="qrImg" alt="QR 코드" class="hide">
+        <div id="qrLink" class="hide"></div>
+        <div class="hint-in">QR을 스캔하면 같은 HTML 파일의 학생 전용 화면이 열립니다. 파일을 학생 기기에도 보내두거나, 웹에 올려두면 어디서든 접속 가능합니다.</div>
+      </div>
     </div>
   </section>
 
-  <!-- 14 모둠 점수판 -->
   <section class="widget" data-w="score" id="w_score">
     <header class="wh"><span class="mod-badge">14</span><h2>모둠 점수판</h2>
       <div class="wtools">
@@ -582,17 +615,28 @@ td.nowp{outline:2px solid #e07b39;outline-offset:-2px}
     <div class="wb"><div id="scoreGrid"></div></div>
   </section>
 
-</div><!-- /pool -->
-
+</div>
 <div id="panes"></div>
 </main>
 
 <button class="exitpill" id="fullExit">채우기 나가기 (Esc)</button>
 <button class="exitpill" id="noteExit">알림장 나가기 (Esc)</button>
 
+<div id="studentView">
+  <div class="sv-head">
+    <h2 id="svTitle">문제지</h2>
+    <p id="svMeta"></p>
+  </div>
+  <div class="sv-body" id="svBody"></div>
+  <div class="sv-foot">
+    <button class="ib" id="svShowAns">정답 보기</button>
+    <button class="ib" id="svPrint">인쇄</button>
+    <button class="prime" id="svClose">돌아가기</button>
+  </div>
+</div>
+
 <script>
 "use strict";
-/* ═══ A. 유틸 ═══ */
 const $=s=>document.querySelector(s);
 const KEY='assign_v6';
 const pad=n=>String(n).padStart(2,'0');
@@ -609,7 +653,64 @@ async function copyText(t,btn){let ok=true;
    document.execCommand('copy');ta.remove();}catch(e2){ok=false;}}
  if(btn){const o=btn.textContent;btn.textContent=ok?'복사됨':'복사 실패';setTimeout(()=>btn.textContent=o,1200);}}
 
-/* ═══ B. 상태 ═══ */
+function renderMd(src){
+ if(!src)return '';
+ const codeBlocks=[];
+ let s=src.replace(/```(\w*)\n?([\s\S]*?)```/g,(_,lang,code)=>{
+  const idx=codeBlocks.length;
+  codeBlocks.push({lang,code:esc(code.trim())});
+  return `\u0000CB${idx}\u0000`;
+ });
+ const inlines=[];
+ s=s.replace(/`([^`\n]+)`/g,(_,c)=>{
+  const idx=inlines.length;
+  inlines.push(esc(c));
+  return `\u0000IC${idx}\u0000`;
+ });
+ s=esc(s);
+ s=s.replace(/^#### (.+)$/gm,'<h4>$1</h4>');
+ s=s.replace(/^### (.+)$/gm,'<h3>$1</h3>');
+ s=s.replace(/^## (.+)$/gm,'<h2>$1</h2>');
+ s=s.replace(/^# (.+)$/gm,'<h1>$1</h1>');
+ s=s.replace(/^---+$/gm,'<hr>');
+ s=s.replace(/^&gt; (.+)$/gm,'<blockquote>$1</blockquote>');
+ s=s.replace(/(?:^\|.+\|\n)+/gm,block=>{
+  const rows=block.trim().split('\n').filter(r=>!/^\|\s*[-:| ]+\s*\|$/);
+  if(rows.length<1)return block;
+  let html='<table>';
+  rows.forEach((r,i)=>{
+   const cells=r.split('|').slice(1,-1).map(c=>c.trim());
+   const tag=i===0?'th':'td';
+   html+='<tr>'+cells.map(c=>`<${tag}>${c}</${tag}>`).join('')+'</tr>';
+  });
+  return html+'</table>';
+ });
+ s=s.replace(/(?:^\d+[.)]\s+.+\n?)+/gm,block=>{
+  const items=block.trim().split('\n').map(l=>l.replace(/^\d+[.)]\s+/,''));
+  return '<ol>'+items.map(i=>`<li>${i}</li>`).join('')+'</ol>';
+ });
+ s=s.replace(/(?:^[-*]\s+.+\n?)+/gm,block=>{
+  const items=block.trim().split('\n').map(l=>l.replace(/^[-*]\s+/,''));
+  return '<ul>'+items.map(i=>`<li>${i}</li>`).join('')+'</ul>';
+ });
+ s=s.replace(/(?:^[①②③④⑤⑥⑦⑧⑨⑩].+\n?)+/gm,block=>{
+  const items=block.trim().split('\n').map(l=>l.replace(/^[①②③④⑤⑥⑦⑧⑨⑩]\s*/,''));
+  return '<ul style="list-style:none;padding-left:4px">'+items.map((i,idx)=>
+   `<li>${['①','②','③','④','⑤','⑥','⑦','⑧','⑨','⑩'][idx]||''} ${i}</li>`).join('')+'</ul>';
+ });
+ s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+ s=s.replace(/\*(.+?)\*/g,'<em>$1</em>');
+ s=s.replace(/~~(.+?)~~/g,'<del>$1</del>');
+ s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+ s=s.replace(/\n{2,}/g,'</p><p>');
+ s=s.replace(/\n/g,'<br>');
+ s='<p>'+s+'</p>';
+ s=s.replace(/<p>\s*<\/p>/g,'');
+ inlines.forEach((c,i)=>{s=s.split(`\u0000IC${i}\u0000`).join(`<code>${c}</code>`);});
+ codeBlocks.forEach((b,i)=>{s=s.split(`\u0000CB${i}\u0000`).join(`<pre><code>${b.code}</code></pre>`);});
+ return s;
+}
+
 const WIDGETS=[
  {id:'note',title:'알림장'},{id:'board',title:'보드'},{id:'tt',title:'시간표'},{id:'picker',title:'랜덤 뽑기'},
  {id:'cal',title:'달력'},{id:'clock',title:'시계 / 타이머'},{id:'wx',title:'날씨'},{id:'dday',title:'D-Day'},
@@ -624,16 +725,16 @@ function makeDef(){return{ver:6,view:{mode:'one',panes:['','','','']},ui:{app:'#
  cal:{},picker:{names:'',seats:{cols:4},seatMap:[],fixed:[],prevMap:[],noSame:true},
  wx:{lat:null,lon:null},dday:{items:[]},
  announce:{text:'',size:36},counter:{goal:25,now:0},sw:{acc:0,runStart:null,laps:[]},
- ai:{mode:'direct',key:'',endpoint:'/api/chat',model:'qwen/qwen3.8'},
+ ai:{mode:'direct',key:'',endpoint:'/api/chat',model:'qwen/qwen3-32b'},
  aid:{msgs:[]},
- gen:{subj:'수학',topic:'',cnt:'5',type:'단답형',lv:'보통',last:''},
+ gen:{subj:'수학',topic:'',cnt:5,lv:'보통',chkMc:true,chkSa:true,chkEs:false,
+      view:'teacher',questions:[],title:''},
  score:{teams:[{name:'1모둠',pts:0},{name:'2모둠',pts:0},{name:'3모둠',pts:0},{name:'4모둠',pts:0}]}};}
 let state=makeDef();
 try{const s=JSON.parse(localStorage.getItem(KEY));
- if(s&&s.ver===6){state=s;}
+ if(s&&s.ver===6)state=s;
  else{const o=JSON.parse(localStorage.getItem('assign_v5'));
-  if(o&&o.ver===5){state=Object.assign(makeDef(),o);state.ver=6;}}}catch(e){state=makeDef();}
-/* 상태 무결성 보강 */
+  if(o&&o.ver===5)state=Object.assign(makeDef(),o,ver=6);}}catch(e){state=makeDef();}
 (function sanitize(){
  const d=makeDef();
  if(!state.ui)state.ui=d.ui;
@@ -666,6 +767,9 @@ try{const s=JSON.parse(localStorage.getItem(KEY));
  if(!['direct','proxy'].includes(state.ai.mode))state.ai.mode='direct';
  if(!state.aid||!Array.isArray(state.aid.msgs))state.aid=d.aid;
  if(!state.gen)state.gen=d.gen;
+ if(!Array.isArray(state.gen.questions))state.gen.questions=[];
+ state.gen.cnt=clamp(state.gen.cnt||5,1,15);
+ if(!['teacher','student'].includes(state.gen.view))state.gen.view='teacher';
  if(!state.score||!Array.isArray(state.score.teams)||!state.score.teams.length)state.score=d.score;})();
 let saveT=null;
 function flushSave(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
@@ -674,7 +778,6 @@ function scheduleSave(){clearTimeout(saveT);$('#saveDot').textContent='저장 �
 window.addEventListener('beforeunload',flushSave);
 const curPage=()=>state.note.pages[state.note.cur];
 
-/* ═══ C. 슬롯 시스템 ═══ */
 const panesRoot=$('#panes'),pool=$('#pool'),paneEls=[];
 let activePane=0;
 for(let i=0;i<4;i++){
@@ -719,7 +822,6 @@ function setMode(m){if(!MODE_N[m])m='one';state.view.mode=m;document.body.datase
  layout();scheduleSave();requestAnimationFrame(()=>setTimeout(fitAll,30));}
 document.querySelectorAll('#modeGrp button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
 
-/* ═══ D. 플러그인 트레이 ═══ */
 const tray=$('#tray');
 (function buildTray(){
  tray.innerHTML='<span class="tray-label">플러그인</span>';
@@ -736,9 +838,8 @@ function updateTray(){const n=MODE_N[state.view.mode];
   if(slot>-1){w._chip.classList.add('inuse');tag.textContent='SLOT '+(slot+1);tag.classList.remove('hide');}
   else{w._chip.classList.remove('inuse');tag.classList.add('hide');}});}
 
-/* ═══ E. 화면 채우기 / 알림장 집중 모드 ═══ */
 function enterFull(){document.body.classList.add('full');
- try{const de=document.documentElement;if(de.requestFullscreen)de.requestFullscreen();}catch(e){}
+ try{if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen();}catch(e){}
  setTimeout(fitAll,150);}
 function exitFull(){document.body.classList.remove('full');
  try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}
@@ -748,7 +849,7 @@ function enterNoteFocus(){
  if(wn&&!(wn.parentElement&&wn.parentElement.classList.contains('pbody')))assignTo(0,'note');
  document.body.classList.add('notefocus');
  $('#btnNoteFull').textContent='축소';
- try{const de=document.documentElement;if(de.requestFullscreen)de.requestFullscreen();}catch(e){}
+ try{if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen();}catch(e){}
  setTimeout(fitAll,150);}
 function exitNoteFocus(){document.body.classList.remove('notefocus');
  $('#btnNoteFull').textContent='확대';
@@ -769,7 +870,6 @@ document.addEventListener('keydown',e=>{
   if(document.body.classList.contains('notefocus'))exitNoteFocus();
   else if(document.body.classList.contains('full'))exitFull();}});
 
-/* ═══ F. 캔버스 드로잉 ═══ */
 function makeLayer(cv,activeDefault){
  const ctx=cv.getContext('2d');
  const L={cv,color:'#23272b',size:4,erase:false,undo:[],active:!!activeDefault,onSave:null};
@@ -812,7 +912,6 @@ function fitAll(){
 let rzT=null;
 window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(fitAll,150);});
 
-/* ═══ G. 알림장 ═══ */
 const noteArea=$('#noteArea'),pageSel=$('#pageSel'),subjSel=$('#subjSel'),taskIn=$('#taskIn'),taskList=$('#taskList');
 let basePx=state.note.fzPx,selFz=3,hlOn=false,savedRange=null;
 subjSel.innerHTML=SUBJ_LIST.map(s=>`<option>${s}</option>`).join('');
@@ -861,7 +960,6 @@ $('#pageDel').addEventListener('click',()=>{if(!confirm('이 페이지를 삭제
  state.note.cur=clamp(state.note.cur,0,state.note.pages.length-1);
  noteDrawShown=null;noteL.reset();loadPage();scheduleSave();});
 noteArea.addEventListener('input',()=>{curPage().html=noteArea.innerHTML;scheduleSave();});
-/* 서식 */
 function saveSel(){try{const s=getSelection();
  if(s.rangeCount&&noteArea.contains(s.anchorNode))savedRange=s.getRangeAt(0).cloneRange();}catch(e){}}
 function restSel(){try{if(savedRange){const s=getSelection();s.removeAllRanges();s.addRange(savedRange);}}catch(e){}}
@@ -895,7 +993,6 @@ $('#fgIn').addEventListener('input',()=>{noteArea.focus();restSel();
  try{document.execCommand('foreColor',false,$('#fgIn').value);}catch(e){}
  commitNote();scheduleSave();});
 $('#boardBg').addEventListener('input',()=>{state.note.boardColor=$('#boardBg').value;applyBoardColor();scheduleSave();});
-/* 분필 도구막대 */
 const dBar=$('#nDrawBar');
 dBar.innerHTML=['#f7f3e8','#ffe066','#ffb3c1','#9be2ff'].map((c,i)=>
  `<span class="dot${i?'':' on'}" data-c="${c}" style="background:${c}"></span>`).join('')+
@@ -908,7 +1005,6 @@ $('#ndErase').addEventListener('click',e=>{noteL.erase=!noteL.erase;e.target.cla
 $('#ndDone').addEventListener('click',()=>{noteL.active=false;
  $('#noteCanvas').style.display='none';dBar.classList.add('hide');$('#btnDraw').classList.remove('on');
  if(noteL.cv.width){curPage().draw=noteL.cv.toDataURL();}scheduleSave();});
-/* 복사 / 내보내기 */
 function noteAllText(){commitNote();let out='';
  state.note.pages.forEach(pg=>{out+=`[ ${pg.title} ]\n`;
   if(pg.tasks.length){out+='\n과제\n';pg.tasks.forEach(t=>{out+=`${t.done?'[완료]':'[미완료]'} ${t.subj} - ${t.text}\n`;});}
@@ -919,7 +1015,6 @@ $('#btnExport').addEventListener('click',()=>{flushSave();
  download('알림장_'+new Date().toISOString().slice(0,10)+'.txt',noteAllText(),'text/plain');});
 $('#btnCopy').addEventListener('click',e=>copyText(noteAllText(),e.target));
 
-/* ═══ H. 보드 ═══ */
 const bTools=$('#bTools'),bCols=['#23272b','#c0392b','#1d6fd6','#2c8a4b','#e07b39'];
 bTools.innerHTML=bCols.map((c,i)=>`<span class="bcol${i?'':' on'}" data-c="${c}" style="background:${c}"></span>`).join('')+
  `<select id="bwSize"><option value="2">얇게</option><option value="4" selected>보통</option><option value="8">두껍게</option></select>`+
@@ -932,7 +1027,6 @@ $('#bwErase').addEventListener('click',e=>{boardL.erase=!boardL.erase;e.target.c
 $('#bwUndo').addEventListener('click',()=>boardL.undoFn());
 $('#bwClear').addEventListener('click',()=>{if(confirm('보드를 모두 지울까요?'))boardL.clear();});
 
-/* ═══ I. 시간표 ═══ */
 const DAYS=['월','화','수','목','금'];
 const PT=[['09:10','10:00'],['10:10','11:00'],['11:10','12:00'],['13:10','14:00'],['14:10','15:00'],['15:10','16:00'],['16:10','17:00']];
 const curSlot=()=>state.tt.slots[state.tt.cur];
@@ -957,10 +1051,20 @@ function ttNow(){document.querySelectorAll('#ttTable .nowc,#ttTable .nowp').forE
  const thH=document.querySelector(`#ttTable th[data-dow="${DAYS[dw-1]}"]`);if(thH)thH.classList.add('nowc');
  if(p>-1)document.querySelectorAll(`#ttTable tr[data-p="${p}"] > *`).forEach(x=>x.classList.add('nowp'));}
 
-/* ═══ J. 랜덤 뽑기 / 자리바꾸기 ═══ */
+/* ── 뽑기 (숫자 자동 확장 포함) ── */
 const pkNames=$('#pkNames');pkNames.value=state.picker.names;
 pkNames.addEventListener('input',()=>{state.picker.names=pkNames.value;scheduleSave();});
-const names=()=>pkNames.value.split(/[,\n]/).map(s=>s.trim()).filter(Boolean);
+const names=()=>{
+  const raw=pkNames.value.trim();
+  if(!raw)return [];
+  // 숫자 하나만 입력 시 1~N으로 자동 확장 (예: 6, 25개, 30명)
+  const m=raw.match(/^\s*(\d+)\s*(개|명|사람|번)?\s*$/);
+  if(m){
+    const n=parseInt(m[1],10);
+    if(n>0 && n<=200)return Array.from({length:n},(_,i)=>String(i+1));
+  }
+  return raw.split(/[,\n]/).map(s=>s.trim()).filter(Boolean);
+};
 $('#tabPick').addEventListener('click',()=>{$('#tabPick').classList.add('on');$('#tabSeat').classList.remove('on');$('#panePick').classList.remove('hide');$('#paneSeat').classList.add('hide');});
 $('#tabSeat').addEventListener('click',()=>{$('#tabSeat').classList.add('on');$('#tabPick').classList.remove('on');$('#paneSeat').classList.remove('hide');$('#panePick').classList.add('hide');});
 function showResult(txt,big){const el=$('#pkResult');el.classList.remove('pop');el.textContent=txt;
@@ -975,8 +1079,6 @@ $('#btnPickGroup').addEventListener('click',()=>{const ns=shuffle(names()),g=cla
  if(!ns.length)return alert('추첨 대상을 먼저 입력하세요');
  const gs=Array.from({length:g},()=>[]);ns.forEach((n,i)=>gs[i%g].push(n));
  $('#pkGroups').innerHTML=gs.map((m,i)=>`<div><b>${i+1}모둠</b> ${m.map(esc).join(', ')}</div>`).join('');});
-
-/* 자리바꾸기 */
 let seatSel=-1;
 function drawSeats(){
  const cols=clamp(state.picker.seats.cols,2,8),map=state.picker.seatMap,fix=state.picker.fixed;
@@ -988,7 +1090,7 @@ function drawSeats(){
   ?map.map((n,i)=>n
     ?`<div class="seat${fix.includes(n)?' fixed':''}${i===seatSel?' sel':''}" data-i="${i}" title="클릭: 선택/맞바꾸기, 두 번 클릭: 고정">${esc(n)}</div>`
     :`<div class="seat empty" data-i="${i}">-</div>`).join('')
-  :'<div class="empty-in">추첨 대상을 입력하고 자리 배치 버튼을 누르세요</div>';
+  :'<div class="empty-in">추첨 대상을 입력하고 자리 배치 버튼을 누르세요<br><small style="color:#98998a">숫자 하나만 입력하면 1~N 자동 확장됩니다</small></div>';
  $('#seatGrid').querySelectorAll('.seat').forEach(el=>{
   el.addEventListener('click',()=>seatClick(+el.dataset.i));
   el.addEventListener('dblclick',()=>seatFix(+el.dataset.i));});}
@@ -1041,7 +1143,6 @@ $('#btnSeatCopy').addEventListener('click',e=>{
   out+=m.slice(r*cols,r*cols+cols).map(x=>x||'-').join('\t')+'\n';}
  copyText(out,e.target);});
 
-/* ═══ K. 달력 ═══ */
 let calY,calM,calSel=null;{const t=new Date();calY=t.getFullYear();calM=t.getMonth();}
 const key=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
 function drawCal(){$('#calTitle').textContent=`${calY}년 ${calM+1}월`;const g=$('#calGrid');g.innerHTML='';
@@ -1062,7 +1163,6 @@ $('#calSave').addEventListener('click',()=>{if(!calSel)return alert('먼저 날�
  const v=$('#calMemo').value.trim();if(v)state.cal[calSel]=v;else delete state.cal[calSel];drawCal();scheduleSave();});
 $('#calDel').addEventListener('click',()=>{if(calSel){delete state.cal[calSel];$('#calMemo').value='';drawCal();scheduleSave();}});
 
-/* ═══ L. 시계 / 타이머 ═══ */
 function beep3(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C();
  try{if(c.state==='suspended')c.resume();}catch(e){}
  [0,.28,.56].forEach(t=>{const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;
@@ -1083,7 +1183,6 @@ setInterval(()=>{const n=new Date();
  $('#clkDate').textContent=`${n.getFullYear()}. ${n.getMonth()+1}. ${n.getDate()}. (${'일월화수목금토'[n.getDay()]})`;
  if(n.getSeconds()%15===0)ttNow();},1000);
 
-/* ═══ M. 날씨 ═══ */
 const WMO={0:'맑음',1:'대체로 맑음',2:'구름 조금',3:'흐림',45:'안개',48:'안개',51:'이슬비',53:'이슬비',55:'이슬비',
  61:'비',63:'비',65:'강한 비',66:'어는 비',67:'어는 비',71:'눈',73:'눈',75:'강한 눈',77:'싸락눈',
  80:'소나기',81:'소나기',82:'강한 소나기',85:'소낙눈',86:'소낙눈',95:'뇌우',96:'뇌우',99:'뇌우'};
@@ -1106,7 +1205,6 @@ $('#wxHere').addEventListener('click',()=>{
 $('#wxLoad').addEventListener('click',()=>{state.wx.lat=parseFloat($('#wxLat').value);state.wx.lon=parseFloat($('#wxLon').value);
  isNaN(state.wx.lat)?$('#wxDesc').textContent='좌표를 확인하세요':fetchWx();});
 
-/* ═══ N. D-Day ═══ */
 function renderDday(){const list=state.dday.items,tn=new Date();tn.setHours(0,0,0,0);
  $('#ddList').innerHTML=list.length?list.map((it,i)=>{
   const d=new Date(it.date+'T00:00:00'),diff=isNaN(d)?0:Math.round((d-tn)/86400000);
@@ -1123,7 +1221,6 @@ $('#ddAdd').addEventListener('click',()=>{const label=$('#ddLabel').value.trim()
  if(!date)return alert('날짜를 선택하세요');
  state.dday.items.push({label,date});$('#ddLabel').value='';renderDday();scheduleSave();});
 
-/* ═══ O. 알림판 / 카운터 / 스톱워치 ═══ */
 const annIn=$('#annIn'),annText=$('#annText'),annSize=$('#annSize'),annSzLbl=$('#annSzLbl');
 annIn.value=state.announce.text;annSize.value=state.announce.size;
 annText.style.fontSize=state.announce.size+'px';annText.textContent=state.announce.text;
@@ -1131,7 +1228,6 @@ annSzLbl.textContent=state.announce.size+'px';
 annIn.addEventListener('input',()=>{state.announce.text=annIn.value;annText.textContent=annIn.value;scheduleSave();});
 annSize.addEventListener('input',()=>{state.announce.size=clamp(+annSize.value||36,18,80);
  annText.style.fontSize=state.announce.size+'px';annSzLbl.textContent=state.announce.size+'px';scheduleSave();});
-
 function cntRender(){const c=state.counter;
  $('#cntNow').textContent=c.now;$('#cntGoal').textContent='/ '+c.goal;
  $('#cntBar i').style.width=(c.goal?Math.min(100,c.now/c.goal*100):0)+'%';
@@ -1143,7 +1239,6 @@ $('#cntGoalIn').addEventListener('change',()=>{
 $('#cntPlus').addEventListener('click',()=>{state.counter.now=clamp(state.counter.now+1,0,999);cntRender();scheduleSave();});
 $('#cntMinus').addEventListener('click',()=>{state.counter.now=clamp(state.counter.now-1,0,999);cntRender();scheduleSave();});
 $('#cntReset').addEventListener('click',()=>{state.counter.now=0;cntRender();scheduleSave();});
-
 let swIv=null;
 const swDisp=$('#swDisp');
 function swNow(){return state.sw.acc+(state.sw.runStart?Date.now()-state.sw.runStart:0);}
@@ -1164,13 +1259,25 @@ $('#swToggle').addEventListener('click',()=>state.sw.runStart?swPause():swStart(
 $('#swLapBtn').addEventListener('click',swLap);
 $('#swReset').addEventListener('click',swResetAll);
 
-/* ═══ P. AI (Groq / Vercel 프록시) ═══ */
-const AI_SYS='너는 대한민국 학교 현장에서 일하는 교사를 돕는 보조 교사야. 한국어로 간결하고 정확하게 답해. 알림장 문구, 가정통신문, 수업 아이디어, 평가 문항 출제, 학생 상담 문구 등을 도와줘.';
+const AI_SYS='너는 대한민국 학교 현장에서 일하는 교사를 돕는 보조 교사야. 한국어로 간결하고 정확하게 답해.';
+async function aiFetchModels(){
+ const ai=state.ai;
+ if(ai.mode==='proxy'){
+  const r=await fetch(ai.endpoint||'/api/chat');
+  let j={};try{j=await r.json();}catch(e){}
+  if(!r.ok)throw new Error('프록시 오류 '+r.status+' '+(j.error||''));
+  return (j.models||[]).sort();
+ }
+ if(!ai.key)throw new Error('Groq API 키를 먼저 입력하세요');
+ const r=await fetch('https://api.groq.com/openai/v1/models',{headers:{'Authorization':'Bearer '+ai.key}});
+ let j={};try{j=await r.json();}catch(e){}
+ if(!r.ok)throw new Error('Groq 오류 '+r.status+' '+((j.error&&j.error.message)||''));
+ return (j.data||[]).map(m=>m.id).sort();}
 async function askAI(messages){
  const ai=state.ai;
  if(ai.mode==='proxy'){
   const r=await fetch(ai.endpoint||'/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({messages,model:ai.model||'qwen/qwen3.8'})});
+   body:JSON.stringify({messages,model:ai.model||'qwen/qwen3-32b'})});
   let j={};try{j=await r.json();}catch(e){}
   if(!r.ok)throw new Error('프록시 오류 '+r.status+' '+(j.error||''));
   return j.content||(j.choices&&j.choices[0]&&j.choices[0].message?j.choices[0].message.content:'')||'';
@@ -1178,11 +1285,10 @@ async function askAI(messages){
  if(!ai.key)throw new Error('Groq API 키를 입력하세요 (또는 Vercel 프록시 모드 사용)');
  const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
   headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},
-  body:JSON.stringify({model:ai.model||'qwen/qwen3.8',messages,temperature:.7})});
+  body:JSON.stringify({model:ai.model||'qwen/qwen3-32b',messages,temperature:.7})});
  let j={};try{j=await r.json();}catch(e){}
  if(!r.ok)throw new Error('Groq 오류 '+r.status+' '+((j.error&&j.error.message)||''));
  return (j.choices&&j.choices[0]&&j.choices[0].message)?j.choices[0].message.content:'';}
-
 const aiMode=$('#aiMode'),aiKey=$('#aiKey'),aiEndpoint=$('#aiEndpoint'),aiModel=$('#aiModel');
 aiMode.value=state.ai.mode;aiKey.value=state.ai.key;aiEndpoint.value=state.ai.endpoint;aiModel.value=state.ai.model;
 function aiCfgSync(){aiKey.classList.toggle('hide',state.ai.mode==='proxy');
@@ -1192,9 +1298,21 @@ aiMode.addEventListener('change',()=>{state.ai.mode=aiMode.value;aiCfgSync();sch
 aiKey.addEventListener('input',()=>{state.ai.key=aiKey.value;scheduleSave();});
 aiEndpoint.addEventListener('input',()=>{state.ai.endpoint=aiEndpoint.value;scheduleSave();});
 aiModel.addEventListener('input',()=>{state.ai.model=aiModel.value;scheduleSave();});
-document.querySelectorAll('.mchip').forEach(c=>c.addEventListener('click',()=>{
- aiModel.value=c.dataset.m;state.ai.model=c.dataset.m;scheduleSave();}));
-
+$('#aiModels').addEventListener('click',async e=>{
+ const b=e.target,o=b.textContent;b.textContent='불러오는 중…';
+ const box=$('#aiQChips');
+ try{
+  const list=await aiFetchModels();
+  $('#aiModelDl').innerHTML=list.map(id=>`<option value="${esc(id)}">`).join('');
+  const qw=list.filter(id=>id.toLowerCase().includes('qwen'));
+  const show=qw.length?qw:list.slice(0,20);
+  box.innerHTML=`<span class="hint-in">${list.length}개 모델 중 ${qw.length?('qwen '+qw.length+'개'):'qwen 없음'} — 클릭해서 선택:</span>`+
+   show.map(id=>`<button class="mchip">${esc(id)}</button>`).join('');
+  box.querySelectorAll('.mchip').forEach(c=>c.addEventListener('click',()=>{
+   aiModel.value=c.textContent;state.ai.model=c.textContent;scheduleSave();}));
+  if(qw.length===1){aiModel.value=qw[0];state.ai.model=qw[0];scheduleSave();}
+ }catch(err){box.innerHTML=`<span class="hint-in">오류: ${esc(err.message)}</span>`;}
+ b.textContent=o;});
 let aiBusy=false;
 function aiAddMsg(role,text){const d=document.createElement('div');
  d.className='aim '+(role==='user'?'u':'a');d.textContent=text;
@@ -1220,40 +1338,223 @@ $('#aiInput').addEventListener('keydown',e=>{
 $('#aiClear').addEventListener('click',()=>{state.aid.msgs=[];$('#aiChat').innerHTML='';scheduleSave();});
 state.aid.msgs.forEach(m=>aiAddMsg(m.role,m.content));
 
-/* ═══ Q. AI 문제 생성기 ═══ */
-const genSubj=$('#genSubj'),genTopic=$('#genTopic'),genCnt=$('#genCnt'),genType=$('#genType'),genLv=$('#genLv'),genOut=$('#genOut');
+const genSubj=$('#genSubj'),genTopic=$('#genTopic'),genCnt=$('#genCnt'),
+      chkMc=$('#chkMc'),chkSa=$('#chkSa'),chkEs=$('#chkEs'),genLv=$('#genLv'),
+      genQList=$('#genQList'),genClear=$('#genClear');
 genSubj.innerHTML=SUBJ_LIST.map(s=>`<option>${s}</option>`).join('');
 genSubj.value=SUBJ_LIST.includes(state.gen.subj)?state.gen.subj:'수학';
 genTopic.value=state.gen.topic;genCnt.value=state.gen.cnt;
-genType.value=state.gen.type;genLv.value=state.gen.lv;
-if(state.gen.last)genOut.textContent=state.gen.last;
-genSubj.addEventListener('change',()=>{state.gen.subj=genSubj.value;scheduleSave();});
-genTopic.addEventListener('input',()=>{state.gen.topic=genTopic.value;scheduleSave();});
-genCnt.addEventListener('change',()=>{state.gen.cnt=genCnt.value;scheduleSave();});
-genType.addEventListener('change',()=>{state.gen.type=genType.value;scheduleSave();});
-genLv.addEventListener('change',()=>{state.gen.lv=genLv.value;scheduleSave();});
+chkMc.checked=state.gen.chkMc!==false;chkSa.checked=state.gen.chkSa!==false;chkEs.checked=!!state.gen.chkEs;
+genLv.value=['쉬움','보통','어려움'].includes(state.gen.lv)?state.gen.lv:'보통';
+function genSyncState(){
+ state.gen.subj=genSubj.value;
+ state.gen.topic=genTopic.value.trim();
+ state.gen.cnt=clamp(+genCnt.value||5,1,15);
+ state.gen.chkMc=chkMc.checked;
+ state.gen.chkSa=chkSa.checked;
+ state.gen.chkEs=chkEs.checked;
+ state.gen.lv=genLv.value;}
+genSubj.addEventListener('change',genSyncState);
+genTopic.addEventListener('input',genSyncState);
+genCnt.addEventListener('change',genSyncState);
+[chkMc,chkSa,chkEs].forEach(el=>el.addEventListener('change',()=>{
+ if(!chkMc.checked&&!chkSa.checked&&!chkEs.checked){chkMc.checked=true;}
+ genSyncState();scheduleSave();}));
+genLv.addEventListener('change',()=>{genSyncState();scheduleSave();});
+function renderQuestions(){
+ const qs=state.gen.questions,view=state.gen.view;
+ if(!qs.length){
+  genQList.innerHTML=`<div class="gen-empty">
+   과목·주제·난이도·유형을 고르고 <b>문제 만들기</b> 버튼을 누르세요.<br>
+   각 문제는 마크다운으로 서식 처리되고, QR코드로 학생에게 공유할 수 있습니다.
+  </div>`;return;}
+ genQList.innerHTML='';
+ qs.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='q-card';
+  const head=document.createElement('div');head.className='q-head';
+  head.innerHTML=`<span class="q-no">문항 ${i+1}</span><span class="q-type">${esc(q.type||'문제')}</span>`;
+  card.append(head);
+  const body=document.createElement('div');body.className='q-body';
+  body.innerHTML=renderMd(q.question||'');
+  card.append(body);
+  if(q.answer){
+   const ans=document.createElement('div');ans.className='q-answer';
+   if(view==='student'){
+    ans.innerHTML=`<b>정답 (보기 버튼을 눌러 확인)</b><div class="hide">${renderMd(q.answer)}</div>`;
+    const btn=document.createElement('button');btn.className='ib';btn.textContent='보기';
+    btn.style.marginTop='6px';
+    btn.addEventListener('click',()=>{
+     const d=ans.querySelector('div');d.classList.toggle('hide');
+     btn.textContent=d.classList.contains('hide')?'보기':'숨기기';});
+    ans.append(btn);
+   }else{
+    ans.innerHTML=`<b>정답 · 해설</b>${renderMd(q.answer)}`;
+   }
+   card.append(ans);
+  }
+  const foot=document.createElement('div');foot.className='q-foot';
+  const cpBtn=document.createElement('button');cpBtn.className='ib';cpBtn.textContent='이 문제 복사';
+  cpBtn.addEventListener('click',()=>copyText(`${i+1}. ${q.question}\n\n[정답]\n${q.answer||''}`,cpBtn));
+  foot.append(cpBtn);
+  if(q.explain){
+   const ex=document.createElement('details');ex.style.fontSize='12px';ex.style.color='#5f6153';
+   ex.innerHTML=`<summary style="cursor:pointer;font-weight:700">풀이 보기</summary><div style="margin-top:4px">${renderMd(q.explain)}</div>`;
+   foot.append(ex);
+  }
+  card.append(foot);
+  genQList.append(card);
+ });
+}
+document.querySelectorAll('.gen-mode-tabs button').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.gen-mode-tabs button').forEach(x=>x.classList.remove('on'));
+ b.classList.add('on');state.gen.view=b.dataset.view;renderQuestions();scheduleSave();}));
+function parseQuestions(text){
+ let m=text.match(/```(?:json)?\s*([\s\S]*?)```/);
+ let cand=m?m[1].trim():text.trim();
+ const start=cand.search(/[\[{]/);
+ if(start>-1)cand=cand.slice(start);
+ try{
+  const arr=JSON.parse(cand);
+  if(Array.isArray(arr))return arr.map((q,i)=>({
+   type:q.type||q.유형||(q.choices?'선택형':'단답형'),
+   question:q.question||q.문제||q.q||'',
+   answer:q.answer||q.정답||q.a||'',
+   explain:q.explain||q.해설||q.explanation||''}));
+  throw new Error('배열 아님');
+ }catch(e){}
+ const qs=[];
+ const blocks=text.split(/(?:^|\n)(?=(?:\d+|[①②③④⑤⑥⑦⑧⑨⑩])[.)]\s+)/);
+ let cur=null;
+ blocks.forEach(b=>{
+  const trimmed=b.trim();if(!trimmed)return;
+  const typeMatch=trimmed.match(/\[(선택형|단답형|서술형|객관식|주관식)\]/);
+  const ansMatch=trimmed.match(/(?:\*\*?정답\*\*?|정답\s*[:：])\s*([\s\S]*?)(?=(?:\*\*?해설\*\*?|해설\s*[:：]|풀이\s*[:：])|$)/i);
+  const expMatch=trimmed.match(/(?:\*\*?해설\*\*?|해설\s*[:：]|풀이\s*[:：])\s*([\s\S]*?)$/i);
+  let q=trimmed;
+  if(ansMatch)q=trimmed.slice(0,ansMatch.index).trim();
+  cur={
+   type:typeMatch?typeMatch[1]:(ansMatch&&ansMatch[1].match(/^[①②③④]|\(\d\)/)?'선택형':'단답형'),
+   question:q.replace(/^\[(선택형|단답형|서술형|객관식|주관식)\]\s*/,''),
+   answer:ansMatch?ansMatch[1].trim():'',
+   explain:expMatch?expMatch[1].trim():''};
+  qs.push(cur);
+ });
+ return qs.filter(q=>q.question);
+}
 let genBusy=false;
 $('#genBtn').addEventListener('click',async()=>{
  if(genBusy)return;
- const topic=genTopic.value.trim();
+ genSyncState();
+ const topic=state.gen.topic;
  if(!topic)return alert('주제/단원을 입력하세요');
+ const types=[];
+ if(state.gen.chkMc)types.push('선택형(4지선다, 보기 ①②③④ 포함)');
+ if(state.gen.chkSa)types.push('단답형');
+ if(state.gen.chkEs)types.push('서술형');
+ if(!types.length){alert('최소 하나의 유형을 선택하세요');return;}
  genBusy=true;$('#genBtn').textContent='생성 중…';
- genOut.textContent='문제를 만드는 중입니다…';
- const prompt=`너는 한국 학교 평가 문항 출제 전문가야.
+ const prompt=`너는 한국 학교 평가 문항 출제 전문가야. 다음 조건에 맞춰 문제 세트를 JSON 배열로만 출력해.
+
 과목: ${state.gen.subj}
 주제/단원: ${topic}
-문항 수: ${state.gen.cnt}
-유형: ${state.gen.type}
 난이도: ${state.gen.lv}
-조건: 한국어로 출력. 문제에 번호를 매겨. 선택형이면 각 문제에 ①~④ 보기를 달고 마지막에 정답 모음을 추가해. 단답형/서술형이면 마지막에 예시 답안을 추가해. 설명은 최소화하고 문항 중심으로 출력해.`;
- try{
-  const ans=await askAI([{role:'system',content:'너는 정확한 평가 문항을 출제하는 전문가다.'},{role:'user',content:prompt}]);
-  genOut.textContent=ans;state.gen.last=ans;scheduleSave();
- }catch(e){genOut.textContent='오류: '+e.message;}
- genBusy=false;$('#genBtn').textContent='문제 만들기';});
-$('#genCopy').addEventListener('click',e=>copyText(genOut.textContent,e.target));
+문항 수: ${state.gen.cnt}
+유형: ${types.join(', ')} (가능한 한 고르게 섞어)
 
-/* ═══ R. 모둠 점수판 ═══ */
+출력 형식 (JSON 배열, 다른 설명 금지, 코드블록 사용 금지):
+[
+  {
+    "type": "선택형" | "단답형" | "서술형",
+    "question": "마크다운으로 작성된 문제 전문. 선택형이면 ①②③④ 보기를 포함.",
+    "answer": "정답 (선택형은 ①번이면 ①, 번호도 함께)",
+    "explain": "간단한 풀이 또는 해설"
+  }
+]
+
+요구사항:
+- 한국어로 작성. 초등~중등 수준에 적합하게.
+- 선택형은 4개의 보기를 만들고 정답은 하나만.
+- **굵게**, *기울임*, \`코드\`, 목록(-), 번호 매기기(1. 2. 3.) 등 마크다운 문법을 자유롭게 사용.
+- JSON 외 다른 텍스트(서론, 결론, 주석) 절대 쓰지 말 것.`;
+ try{
+  const ans=await askAI([
+   {role:'system',content:'너는 JSON 형식으로만 정확히 출력하는 문항 출제 AI다.'},
+   {role:'user',content:prompt}]);
+  const qs=parseQuestions(ans);
+  if(!qs.length)throw new Error('문제를 파싱하지 못했습니다. 다시 시도하거나 다른 모델을 선택하세요.');
+  state.gen.questions=qs;
+  state.gen.title=`${state.gen.subj} · ${topic}`;
+  scheduleSave();renderQuestions();
+ }catch(e){alert('문제 생성 오류: '+e.message);}
+ genBusy=false;$('#genBtn').textContent='문제 만들기';});
+genClear.addEventListener('click',()=>{
+ if(!state.gen.questions.length)return;
+ if(!confirm('생성된 문제를 모두 지울까요?'))return;
+ state.gen.questions=[];state.gen.title='';renderQuestions();scheduleSave();});
+function buildShareUrl(){
+ const payload={
+  t:state.gen.title||'문제지',
+  s:state.gen.subj,
+  q:state.gen.questions.map(q=>({t:q.type,q:q.question,a:q.answer,e:q.explain}))};
+ const json=JSON.stringify(payload);
+ const b64=btoa(unescape(encodeURIComponent(json)))
+   .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ const base=location.href.split('#')[0];
+ return base+'#q='+b64;
+}
+function showQR(url){
+ const img=$('#qrImg');
+ img.src=`https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=${encodeURIComponent(url)}`;
+ img.classList.remove('hide');
+ const link=$('#qrLink');link.textContent=url;link.classList.remove('hide');}
+$('#genShareAll').addEventListener('click',()=>{
+ if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
+ showQR(buildShareUrl());});
+$('#genShareLink').addEventListener('click',e=>{
+ if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
+ copyText(buildShareUrl(),e.target);});
+function renderStudentView(qs,title,meta){
+ $('#svTitle').textContent=title||'문제지';
+ $('#svMeta').textContent=meta||'';
+ const body=$('#svBody');body.innerHTML='';
+ qs.forEach((q,i)=>{
+  const card=document.createElement('div');card.className='sv-q';
+  card.innerHTML=`<div class="q-head">
+    <span class="q-no">문항 ${i+1}</span>
+    <span class="q-type">${esc(q.type||'문제')}</span>
+   </div>
+   <div class="q-body">${renderMd(q.question||'')}</div>
+   <div class="q-answer hide" data-ans="${esc(q.answer||'')}" data-exp="${esc(q.explain||'')}">
+    <b>정답</b>${renderMd(q.answer||'')}
+    ${q.explain?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)"><b style="color:#6b6a5a">풀이</b>${renderMd(q.explain)}</div>`:''}
+   </div>`;
+  body.append(card);
+ });
+ document.body.classList.add('studentview');}
+$('#genOpenStudent').addEventListener('click',()=>{
+ if(!state.gen.questions.length)return alert('먼저 문제를 생성하세요');
+ renderStudentView(state.gen.questions,state.gen.title,
+  `${state.gen.subj} · ${state.gen.questions.length}문항`);});
+$('#svShowAns').addEventListener('click',()=>{
+ document.querySelectorAll('#svBody .q-answer').forEach(el=>el.classList.toggle('hide'));});
+$('#svPrint').addEventListener('click',()=>window.print());
+$('#svClose').addEventListener('click',()=>document.body.classList.remove('studentview'));
+function checkSharedQuiz(){
+ const h=location.hash;
+ if(!h.startsWith('#q='))return;
+ const b64=h.slice(3).replace(/-/g,'+').replace(/_/g,'/');
+ try{
+  const json=decodeURIComponent(escape(atob(b64)));
+  const payload=JSON.parse(json);
+  const qs=(payload.q||[]).map(x=>({
+   type:x.t||'문제',question:x.q||'',answer:x.a||'',explain:x.e||''}));
+  if(qs.length){
+   setTimeout(()=>renderStudentView(qs,payload.t||'문제지',
+    `${payload.s||''} · ${qs.length}문항`),300);
+  }
+ }catch(e){console.warn('공유 문제 파싱 실패',e);}
+}
+
 function scoreRender(){const g=$('#scoreGrid');g.innerHTML='';
  state.score.teams.forEach((t,i)=>{
   const card=document.createElement('div');card.className='score-card';
@@ -1277,14 +1578,12 @@ $('#btnTeamAdd').addEventListener('click',()=>{
 $('#btnScoreReset').addEventListener('click',()=>{
  state.score.teams.forEach(t=>t.pts=0);scoreRender();scheduleSave();});
 
-/* ═══ S. 전역 UI ═══ */
 function applyUI(){document.documentElement.style.setProperty('--app',state.ui.app);
  document.documentElement.style.setProperty('--card',state.ui.card);
  $('#appBg').value=state.ui.app;$('#cardBg').value=state.ui.card;}
 $('#appBg').addEventListener('input',e=>{state.ui.app=e.target.value;applyUI();scheduleSave();});
 $('#cardBg').addEventListener('input',e=>{state.ui.card=e.target.value;applyUI();scheduleSave();});
 
-/* ═══ T. 초기화 ═══ */
 try{
  applyUI();
  ttSelect();buildTT();drawCal();drawSeats();renderDday();
@@ -1292,11 +1591,15 @@ try{
  noteArea.innerHTML=curPage().html||'';
  applyBase();applyBoardColor();
  cntRender();swRender();swLapsRender();scoreRender();
+ document.querySelectorAll('.gen-mode-tabs button').forEach(b=>
+  b.classList.toggle('on',b.dataset.view===state.gen.view));
+ renderQuestions();
  if(state.sw.runStart){swIv=setInterval(swRender,100);$('#swToggle').textContent='일시정지';}
  if(state.wx.lat!=null){$('#wxLat').value=state.wx.lat;$('#wxLon').value=state.wx.lon;fetchWx();}
  setMode(state.view.mode||'one');
  tmRender();
  setTimeout(fitAll,80);setTimeout(fitAll,350);
+ checkSharedQuiz();
 }catch(err){
  $('#saveDot').textContent='초기화 오류';
  alert('초기화 중 오류가 발생했습니다: '+err.message);
